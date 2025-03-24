@@ -18,7 +18,7 @@ namespace Database.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = (localdb)\\MSSQLLocalDB;Database = HotelDb");
+            optionsBuilder.UseSqlServer("Server = (localdb)\\MSSQLLocalDB;Database = HotelDatabase");
         }
     }
 }
