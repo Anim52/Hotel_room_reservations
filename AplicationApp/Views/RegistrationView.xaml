@@ -1,0 +1,55 @@
+﻿<Window x:Class="AplicationApp.Views.RegistrationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AplicationApp.Views"
+        mc:Ignorable="d"
+        Title="RegistrationView" Height="670" Width="800">
+    <Border CornerRadius="20" Background="#F7F3E3" BorderThickness="2" BorderBrush="Black">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="col1" Width="2*"/>
+                <ColumnDefinition x:Name="col2" Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  VerticalAlignment="Center" Margin="20,40,0,20">
+
+                <Label Content="LastName" FontSize="24"/>
+                <TextBox Text="{Binding Lastname}"  Height="50"  Foreground="Black" Margin="0,0,10,20"></TextBox>
+
+                <Label Content="FirsName" FontSize="24"/>
+                <TextBox Text="{Binding Firstname}"  Height="50"  Foreground="Black" Margin="0,0,10,20"></TextBox>
+
+                <Label Content="MiddleName" FontSize="24" Margin="0" ></Label>
+                <TextBox Text="{Binding Middlename}"  Height="50"  Foreground="Black" Margin="0,0,10,20"></TextBox>
+
+                <Label Content="Login" FontSize="24" Margin="0" ></Label>
+                <TextBox Text="{Binding Login}"  Height="50"  Foreground="Black" Margin="0,0,10,20"></TextBox>
+
+                <Label  Content="Password" FontSize="24"></Label>
+                <TextBox Text="{Binding Password}"  Height="50"  Margin="0,0,10,20"></TextBox>
+
+                <Button Command="{Binding RegisterCommand}" Content="Registration " HorizontalAlignment="Left" Width="130" Height="55" ></Button>
+            </StackPanel>
+            <Grid Grid.Column="1" VerticalAlignment="Stretch">
+
+                <!--<Border CornerRadius="0,20,20,0">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Resources/Login.jpg" Stretch="UniformToFill"/>
+                    </Border.Background>
+                </Border>-->
+
+                <StackPanel Background="#80000000" >
+                    <!--<Button Width="200" Height="200">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Assets/Resources/Close.png"/>
+                    </Button.Background>
+                </Button>-->
+                    <TextBlock Text="Уже останавливались у нас?" Foreground="White" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,60,10,0" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Войдите в свой аккаунт, чтобы быстрее оформить бронирование и получить доступ к эксклюзивным предложениям!" FontSize="20" Margin="10,150,10,0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button Content="Login in >>" HorizontalAlignment="Center" Width="130" Height="55" Margin="10,170,10,0"  Foreground="White" Background="#403D39" Click="Login_Btn"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
