@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp.Views"
         mc:Ignorable="d"
-        Title="AutorizationView" Height="450" Width="800">
+        Title="AutorizationView" Height="450" Width="800"
+        FontFamily="{StaticResource Montserrat}"
+        WindowStyle="None"
+        >
     <Border CornerRadius="20" Background="#E0E0E0" BorderThickness="2" BorderBrush="Black">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -13,7 +16,7 @@
                 <ColumnDefinition x:Name="col2" Width="1*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Margin="20,40,0,20" VerticalAlignment="Center">
-                <Label Content="Login" FontSize="24" Margin="0" ></Label>
+                <Label Content="Login" FontSize="24" Margin="0"></Label>
                 <TextBox Text="{Binding Login}" Margin="0,0,10,20"  Height="50"  Foreground="Black"></TextBox>
                 <Label  Content="Password" FontSize="24"></Label>
                 <TextBox Text="{Binding Password}" Margin="0,0,10,20" Height="50" ></TextBox>

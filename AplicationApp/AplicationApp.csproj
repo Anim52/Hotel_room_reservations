@@ -6,10 +6,37 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+	<ApplicationIcon>Assets/Recources/Ico.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Recources\Accaunt.png" />
+    <None Remove="Assets\Recources\default.jpg" />
+    <None Remove="Assets\Recources\Ico.ico" />
+    <None Remove="Assets\Recources\Login.jpg" />
+    <None Remove="Assets\Recources\Logo.jpg" />
+    <None Remove="Assets\Recources\Montserrat.ttf" />
+    <None Remove="Assets\Recources\Numder.png" />
+    <None Remove="Assets\Recources\Reservation.png" />
+    <None Remove="Assets\Recources\Service.png" />
+    <None Remove="Assets\Recources\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data_Management_Service\Data_Management_Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Recources\Accaunt.png" />
+    <Resource Include="Assets\Recources\default.jpg" />
+    <Resource Include="Assets\Recources\Ico.ico" />
+    <Resource Include="Assets\Recources\Login.jpg" />
+    <Resource Include="Assets\Recources\Logo.jpg" />
+    <Resource Include="Assets\Recources\Montserrat.ttf" />
+    <Resource Include="Assets\Recources\Numder.png" />
+    <Resource Include="Assets\Recources\Reservation.png" />
+    <Resource Include="Assets\Recources\Service.png" />
+    <Resource Include="Assets\Recources\User.png" />
   </ItemGroup>
 
 </Project>
