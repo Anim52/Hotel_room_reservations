@@ -146,4 +146,63 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Button" x:Key="MainButton">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="#6200EA"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="MainBorder"
+                        CornerRadius="15"
+                        Background="{TemplateBinding Background}"
+                        Padding="10"
+                        SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Иконка -->
+                            <Image Grid.Column="0"
+                               Source="{TemplateBinding Content}"
+                               Width="30"
+                               Height="30"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+
+                            <!-- Текст -->
+                            <TextBlock Grid.Column="1"
+                                   Text="{TemplateBinding Tag}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontWeight="Bold"/>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Opacity" Value="0.9"/>
+                            <Setter Property="Background" Value="#7C4DFF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="MainBorder" Property="Opacity" Value="0.8"/>
+                            <Setter Property="Background" Value="#3700B3"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

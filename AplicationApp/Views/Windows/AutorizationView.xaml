@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp.Views"
         mc:Ignorable="d"
-        Title="AutorizationView" Height="450" Width="800"
+        Title="Авторизация" Height="450" Width="800"
         FontFamily="{StaticResource Montserrat}"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
         >
     <Border CornerRadius="20" Background="#E0E0E0" BorderThickness="2" BorderBrush="Black">
         <Grid>
@@ -23,13 +26,13 @@
                 <Button Command="{Binding LoginCommand}" Content="Login in" HorizontalAlignment="Left" Width="130" Height="55"></Button>
             </StackPanel>
             <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <!--<StackPanel>
+                <StackPanel>
                     <Border Height="446" CornerRadius="0,20,20,0">
                         <Border.Background >
-                            <ImageBrush ImageSource="/Assets/Resources/Login.jpg" Stretch="UniformToFill"/>
+                            <ImageBrush ImageSource="/Assets/Recources/Login.jpg" Stretch="UniformToFill"/>
                         </Border.Background>
                     </Border>
-                </StackPanel>-->
+                </StackPanel>
                 <StackPanel Background="#80000000" >
                     <TextBlock Text="Впервые выбираете наш отель?" Foreground="White" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,60,10,0" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Text="Впервые выбираете наш отель? Регистрация займет всего несколько минут, и вы сможете наслаждаться комфортом и отличным обслуживанием, которое мы подготовили специально для вас!" Margin="10,60,10,0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
