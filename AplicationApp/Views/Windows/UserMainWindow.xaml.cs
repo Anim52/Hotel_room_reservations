@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AplicationApp.Views.Pages;
+using Database.Context;
+using Database.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,59 @@ namespace AplicationApp
     /// </summary>
     public partial class UserMainWindow : Window
     {
-        public UserMainWindow()
+        private Guid _currentUserId;
+        private string _currentUserLogin;
+        private readonly SqlServerContext _context;
+        public UserMainWindow(Guid userId, string login)
         {
             InitializeComponent();
+            _currentUserId = userId;
+            _currentUserLogin = login;
+            _context = new SqlServerContext();
+        }
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            var user = _context.User.FirstOrDefault(u => u.Id == _currentUserId);
+
+            if (user != null)
+            {
+                ContentControlFrame.Content = new AccauntPage(_currentUserId);
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден.");
+            }
+        }
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            ContentControlFrame.Content = new NumberPage();
+        }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            ContentControlFrame.Content = new GuestPage();
+        }
+
+       
+
+        private void btn5_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentUserId == Guid.Empty)
+            {
+                MessageBox.Show("Ошибка! UserId пустой.");
+                return;
+            }
+
+            ContentControlFrame.Content = new ServicePage();
+        }
+
+        private void btn6_Click(object sender, RoutedEventArgs e)
+        {
+            ContentControlFrame.Content = new UserViewReservation();
+        }
+        private void Close_btn_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
         }
     }
 }

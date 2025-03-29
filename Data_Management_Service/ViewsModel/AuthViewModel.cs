@@ -24,6 +24,8 @@ namespace Data_Management_Service.ViewsModel
         public event Action<string> OnSuccess;
         public event Action OpenAdminWindow;
         public event Action OpenUserWindow;
+        public event Action<Guid, string> OnLoginSuccess;
+
 
         public AuthViewModel()
         {
@@ -90,12 +92,12 @@ namespace Data_Management_Service.ViewsModel
             if (currentUser.Role == "Admin")
             {
                 OnSuccess?.Invoke("Добро пожаловать, Админ!");
-                OpenAdminWindow?.Invoke(); // Оповещаем View, что нужно открыть окно для Админа
+                OnLoginSuccess?.Invoke(currentUser.Id, currentUser.Login);
             }
             else if (currentUser.Role == "User")
             {
                 OnSuccess?.Invoke("Добро пожаловать, Пользователь!");
-                OpenUserWindow?.Invoke(); // Оповещаем View, что нужно открыть окно для Пользователя
+                OnLoginSuccess?.Invoke(currentUser.Id, currentUser.Login);
             }
             else
             {

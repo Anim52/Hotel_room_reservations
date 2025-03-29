@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Management_Service.PageViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace AplicationApp.Views.Pages
     /// </summary>
     public partial class AccauntPage : UserControl
     {
-        public AccauntPage()
+        public AccauntPage(Guid userId)
         {
             InitializeComponent();
+            AccountViewModel accountViewModel = new AccountViewModel(userId);
+            this.DataContext = accountViewModel;         
         }
     }
 }

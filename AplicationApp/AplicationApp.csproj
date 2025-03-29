@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj" />
     <ProjectReference Include="..\Data_Management_Service\Data_Management_Service.csproj" />
   </ItemGroup>
 

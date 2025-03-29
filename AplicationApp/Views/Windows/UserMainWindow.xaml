@@ -17,20 +17,20 @@
                     <Image Source="/Assets/Recources/Accaunt.png" />
                 </Button>
 
-
                 <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click">
                     <Image Source="/Assets/Recources/Service.png"/>
                 </Button>
+                
                 <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click">
                     <Image Source="/Assets/Recources/Reservation.png"/>
                 </Button>
+                
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Close_btn" Content="❌" Style="{StaticResource MainButton1}" Width="50" HorizontalAlignment="Right" Foreground="Black" Margin="460,0,0,0" Click="Close_btn_Click"/>
+                    <Button x:Name="Close_btn" Content="❌" Style="{StaticResource MainButton1}" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Margin="160,0,0,0" Click="Close_btn_Click"/>
 
                 </StackPanel>
             </StackPanel>
         </Grid>
         <ContentControl x:Name="ContentControlFrame" Grid.Row="1"/>
-
     </Grid>
 </Window>

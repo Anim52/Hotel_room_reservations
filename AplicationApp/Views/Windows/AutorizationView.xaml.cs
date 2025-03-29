@@ -31,7 +31,7 @@ namespace AplicationApp.Views
             _viewModel.OnError += ShowError;
             _viewModel.OnSuccess += ShowSuccess;
             _viewModel.OpenAdminWindow += OpenAdminWindow;
-            _viewModel.OpenUserWindow += OpenUserWindow;
+            _viewModel.OnLoginSuccess += OpenUserWindow;
         }
         private void ShowError(string message)
         {
@@ -50,9 +50,9 @@ namespace AplicationApp.Views
             this.Close();
         }
 
-        private void OpenUserWindow()
+        private void OpenUserWindow(Guid userId, string userLogin)
         {
-            var userWindow = new UserMainWindow();
+            var userWindow = new UserMainWindow(userId,userLogin);
             userWindow.Show();
             this.Close();
         }
