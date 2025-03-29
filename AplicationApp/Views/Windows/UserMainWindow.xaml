@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="UserMainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <Button x:Name="btn1" Width="150" Height="60" Tag="Аккаунт" Click="btn1_Click" Margin="8" Style="{StaticResource MainButton1}">
+                    <Image Source="/Assets/Recources/Accaunt.png" />
+                </Button>
+
+
+                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click">
+                    <Image Source="/Assets/Recources/Service.png"/>
+                </Button>
+                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click">
+                    <Image Source="/Assets/Recources/Reservation.png"/>
+                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Close_btn" Content="❌" Style="{StaticResource MainButton1}" Width="50" HorizontalAlignment="Right" Foreground="Black" Margin="460,0,0,0" Click="Close_btn_Click"/>
+
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <ContentControl x:Name="ContentControlFrame" Grid.Row="1"/>
+
     </Grid>
 </Window>

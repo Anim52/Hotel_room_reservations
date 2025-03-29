@@ -5,8 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AplicationApp.Views.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="450" d:DesignWidth="1100">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="678"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10,10,10,0">
+            <TextBlock Text="ФИО" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBox  Width="378" HorizontalAlignment="Left" Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Дата рождения" FontSize="22" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBox Width="378"  HorizontalAlignment="Left" Text="{Binding DateOfBirth, StringFormat=d}"  />
+            <TextBlock Text="Паспортные данные" FontSize="22" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBox  Width="378"  HorizontalAlignment="Left" Text="{Binding PassportNumber,UpdateSourceTrigger = PropertyChanged}"  />
+            <TextBlock Text="Контактные данные" FontSize="22" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBox  Width="378"  HorizontalAlignment="Left" Text="{Binding ContactDetails,UpdateSourceTrigger = PropertyChanged}"  />
+            <TextBlock Text="Предпочтения" FontSize="22" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+            <TextBox  Width="378"  HorizontalAlignment="Left" Text="{Binding Preferences,UpdateSourceTrigger = PropertyChanged}"  />
+        </StackPanel>
+        <StackPanel Grid.Column="1"  Margin="10,10,10,0">
+            <Image Source="/Assets/Recources/User.png" Height="300"/>
+            <Button Content="Cохранить" Margin="0,50,0,0" Background="#A98743" Command="{Binding SaveCommand}"/>
+        </StackPanel>
     </Grid>
 </UserControl>
