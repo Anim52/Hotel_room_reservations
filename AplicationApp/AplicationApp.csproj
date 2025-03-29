@@ -12,6 +12,7 @@
   <ItemGroup>
     <None Remove="Assets\Recources\Accaunt.png" />
     <None Remove="Assets\Recources\default.jpg" />
+    <None Remove="Assets\Recources\Guest.png" />
     <None Remove="Assets\Recources\Ico.ico" />
     <None Remove="Assets\Recources\Login.jpg" />
     <None Remove="Assets\Recources\Logo.jpg" />
@@ -27,13 +28,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Recources\Accaunt.png" />
+    <Resource Include="Assets\Recources\Accaunt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Recources\default.jpg" />
+    <Resource Include="Assets\Recources\Guest.png" />
     <Resource Include="Assets\Recources\Ico.ico" />
     <Resource Include="Assets\Recources\Login.jpg" />
     <Resource Include="Assets\Recources\Logo.jpg" />
     <Resource Include="Assets\Recources\Montserrat.ttf" />
-    <Resource Include="Assets\Recources\Numder.png" />
+    <Resource Include="Assets\Recources\Numder.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Recources\Reservation.png" />
     <Resource Include="Assets\Recources\Service.png" />
     <Resource Include="Assets\Recources\User.png" />

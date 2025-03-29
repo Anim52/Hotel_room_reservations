@@ -5,28 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="1100">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="12*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
         <Grid>
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Button x:Name="btn2" Tag="Номера" Width="150" Height="60" Click="btn2_Click" Margin="8" Style="{StaticResource MainButton}">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" VerticalAlignment="Top">
+                <Button x:Name="btn2" Tag="Номера" Width="247" Height="60" Click="btn2_Click" Margin="8" Style="{StaticResource MainButton1}">
                     <Image Source="/Assets/Recources/Numder.png"/>
                 </Button>
-                <Button x:Name="btn3" Tag="Гости" Width="150" Height="60" Margin="8" Style="{StaticResource MainButton}" Click="btn3_Click">
+                <Button x:Name="btn3" Tag="Гости" Width="150" Height="60" Margin="8" Style="{StaticResource MainButton1}" Click="btn3_Click">
                     <Image Source="/Assets/Recources/Guest.png"/>
                 </Button>
-                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton}" Click="btn5_Click">
+                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click">
                     <Image Source="/Assets/Recources/Service.png"/>
                 </Button>
-                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton}" Click="btn6_Click">
+                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click">
                     <Image Source="/Assets/Recources/Reservation.png"/>
                 </Button>
+                
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Close_btn" Content="❌" Style="{StaticResource MainButton}" Width="50" HorizontalAlignment="Right" Foreground="Black" Margin="299,0,0,0" Click="Close_btn_Click"/>
+                    <Button x:Name="Close_btn" Content="❌"  Width="50" HorizontalAlignment="Right" Foreground="Black" Margin="199,0,0,0" Click="Close_btn_Click"/>
 
                 </StackPanel>
             </StackPanel>
