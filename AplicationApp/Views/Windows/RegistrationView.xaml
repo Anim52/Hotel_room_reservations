@@ -10,6 +10,7 @@
         WindowStyle="None"
         Background="Transparent"
         FontFamily="{StaticResource Montserrat}"
+        ResizeMode="NoResize"
         >
     <Border CornerRadius="20" Background="#E0E0E0" BorderThickness="2" BorderBrush="Black">
         <Grid>

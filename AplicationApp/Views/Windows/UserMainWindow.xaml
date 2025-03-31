@@ -5,11 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp"
         mc:Ignorable="d"
-        Title="UserMainWindow" Height="450" Width="800">
+        Title="UserMainWindow" Height="650" Width="1100"
+        Background="#E0E0E0"
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
         <Grid>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
@@ -26,7 +29,7 @@
                 </Button>
                 
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Close_btn" Content="❌" Style="{StaticResource MainButton1}" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Margin="160,0,0,0" Click="Close_btn_Click"/>
+                    <Button x:Name="Close_btn" Content="❌"  Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Margin="470,0,0,0" Click="Close_btn_Click"/>
 
                 </StackPanel>
             </StackPanel>
