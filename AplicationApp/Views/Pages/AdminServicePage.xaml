@@ -5,8 +5,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AplicationApp.Views.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             
+             >
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <StackPanel VerticalAlignment="Center">
+                <Button  
+                    Margin="10" 
+                    Content="Выполнить" 
+                    Command="{Binding CompleteRequestCommand}" 
+                    />
+                
+                <Button  
+                    Margin="10" 
+                    Content="Удалить" 
+                    Command="{Binding DeleteRequestCommand}" 
+               />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <ListBox ItemsSource="{Binding ServiceRequests}" 
+                 SelectedItem="{Binding SelectedService}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Padding="10" Margin="5">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Fullname}" FontWeight="Bold" FontSize="14"/>
+
+                                <TextBlock Text="{Binding Description}" FontWeight="Bold" FontSize="16"/>
+
+                                <TextBlock Text="{Binding Status}" Foreground="DarkGreen" FontWeight="SemiBold"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </UserControl>

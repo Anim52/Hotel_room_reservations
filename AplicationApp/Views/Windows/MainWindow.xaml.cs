@@ -74,7 +74,7 @@ namespace AplicationApp
 
         private void btn5_Click(object sender, RoutedEventArgs e)
         {
-            //ContentControlFrame.Content = new AdminServicePage(_currentUserId);
+            ContentControlFrame.Content = new AdminServicePage();
         }
 
         private void btn6_Click(object sender, RoutedEventArgs e)

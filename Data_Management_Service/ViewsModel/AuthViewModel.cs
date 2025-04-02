@@ -92,7 +92,7 @@ namespace Data_Management_Service.ViewsModel
             if (currentUser.Role == "Admin")
             {
                 OnSuccess?.Invoke("Добро пожаловать, Админ!");
-                OnLoginSuccess?.Invoke(currentUser.Id, currentUser.Login);
+                OpenAdminWindow?.Invoke();
             }
             else if (currentUser.Role == "User")
             {

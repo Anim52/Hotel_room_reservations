@@ -1,4 +1,5 @@
-﻿using AplicationApp.Views.Pages;
+﻿using AplicationApp.Views;
+using AplicationApp.Views.Pages;
 using Database.Context;
 using Database.Service;
 using System;
@@ -75,6 +76,14 @@ namespace AplicationApp
         private void Close_btn_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
+        }
+
+        private void UnLoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AutorizationView autorizationView = new AutorizationView();
+            autorizationView.Show();
+            this.Close();
+
         }
     }
 }
