@@ -23,7 +23,7 @@
                 <Button Content="Изменить" 
                     Margin="0,30,0,0" 
                     Foreground="White"
-                    x:Name="EditNomer" Click="btn2_Click"/>
+                    x:Name="EditNomer" Click="btn2_Click" Command="{Binding EditNomerCommand}"/>
 
                 <Button Content="Удалить" 
                     Margin="0,30,0,0" 
@@ -35,8 +35,9 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <ListBox ItemsSource="{Binding NomerList}" 
-                 SelectedItem="{Binding SelectedNomer}"
+            <ListBox ItemsSource="{Binding NomerList,UpdateSourceTrigger=PropertyChanged}" 
+                 SelectedItem="{Binding SelectedNomer,Mode=TwoWay}"
+                 
                  Background="Transparent">
                 <ListBox.ItemTemplate>
                     <DataTemplate>

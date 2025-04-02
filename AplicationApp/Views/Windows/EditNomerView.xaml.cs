@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AplicationApp.Assets.Recources;
+using Data_Management_Service.Inerfaces;
+using Data_Management_Service.ViewsModel;
+using Database.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +23,20 @@ namespace AplicationApp.Views.Windows
     /// </summary>
     public partial class EditNomerView : Window
     {
-        public EditNomerView()
+        public EditNomerView(Nomer SelectedNomer)
         {
             InitializeComponent();
+            if (SelectedNomer != null)
+            {
+                AddNomerViewModel editNomerViewModel = new AddNomerViewModel(new FileDialogService());
+                this.DataContext = editNomerViewModel;
+
+
+            }
+            else
+            {
+                MessageBox.Show("Выберите номер для редактирования.");
+            }
         }
     }
 }

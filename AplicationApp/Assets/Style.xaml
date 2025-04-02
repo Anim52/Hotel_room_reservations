@@ -80,7 +80,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="ComboBox">
+    <!--<Style TargetType="ComboBox">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="8,4"/>
@@ -93,7 +93,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <!-- Основной фон -->
+                        --><!-- Основной фон --><!--
                         <Border Name="MainBorder"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
@@ -144,7 +144,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
     <Style TargetType="Button" x:Key="MainButton">
         <Setter Property="Template">
