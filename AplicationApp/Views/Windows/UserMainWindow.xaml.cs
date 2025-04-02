@@ -26,6 +26,7 @@ namespace AplicationApp
         private Guid _currentUserId;
         private string _currentUserLogin;
         private readonly SqlServerContext _context;
+
         public UserMainWindow(Guid userId, string login)
         {
             InitializeComponent();
@@ -66,7 +67,7 @@ namespace AplicationApp
                 return;
             }
 
-            ContentControlFrame.Content = new ServicePage();
+            ContentControlFrame.Content = new ServicePage(_currentUserId);
         }
 
         private void btn6_Click(object sender, RoutedEventArgs e)

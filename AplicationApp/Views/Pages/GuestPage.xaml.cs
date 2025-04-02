@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data_Management_Service.PageViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,19 @@ namespace AplicationApp.Views.Pages
         public GuestPage()
         {
             InitializeComponent();
+            UsersViewModel usersViewModel = new UsersViewModel();
+            this.DataContext = usersViewModel;
+
+            usersViewModel.OnError = (message) => MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            usersViewModel.OnSuccess = (message) => MessageBox.Show(message, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+            usersViewModel.OnConfirm = (message, action) =>
+            {
+                var result = MessageBox.Show(message, "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    action();
+                }
+            };
         }
     }
 }
