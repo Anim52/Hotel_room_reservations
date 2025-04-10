@@ -17,7 +17,7 @@ namespace Database.Service
 
     public class Reservations
     {
-        public Reservations(Guid id, Nomer nomer, Guests guests, DateTime dateReservations, DateTime arrivalDate, DateTime departureDate, int numberOfPersons)
+        public Reservations(Guid id, Nomer nomer, Guests guests, DateTime dateReservations, DateTime arrivalDate, DateTime departureDate, int numberOfPersons,decimal totalPrice)
         {
             Id = id;
             Nomer = nomer;
@@ -26,6 +26,7 @@ namespace Database.Service
             ArrivalDate = arrivalDate;
             DepartureDate = departureDate;
             NumberOfPersons = numberOfPersons;
+            TotalPrice = totalPrice;
         }
         public Reservations()
         {
@@ -40,6 +41,8 @@ namespace Database.Service
         public enum StatusReservations;
         public int NumberOfPersons { get; set; }
         public Status Status { get; set; }
+        public decimal TotalPrice { get; set; }
+
         [NotMapped]
 
         public string StatusRegister

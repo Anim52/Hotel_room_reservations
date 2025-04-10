@@ -3,6 +3,7 @@ using Data_Management_Service.OtherViews;
 using Data_Management_Service.ViewsModel;
 using Database.Context;
 using Database.Service;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,7 @@ namespace Data_Management_Service.PageViewModel
         private DateTime? _arrivalDate;
         private DateTime? _departureDate;
         private int _numberOfPersons;
+        private decimal _calculatedPrice;
 
         public ObservableCollection<Nomer> NomerList { get; set; }
         public ObservableCollection<Reservations> ReservationList { get; set; }
@@ -37,9 +39,31 @@ namespace Data_Management_Service.PageViewModel
             AddReservationCommand = new RelayCommand(AddReservation);
             CancelReservationCommand = new RelayCommand(CancelReservation);
             SetPopulatedCommand = new RelayCommand(SetPopulated);
+            ConfirmReservationCommand = new RelayCommand(ConfirmReservation);
 
             NomerList = new ObservableCollection<Nomer>(_context.Nomers.Where(n => n.Status).ToList());
-            ReservationList = new ObservableCollection<Reservations>(_context.Reservations.ToList());
+            ReservationList = new ObservableCollection<Reservations>(
+                _context.Reservations
+                    .Include(r => r.Nomer)
+                    .Include(r => r.Guests)
+                    .ToList());
+        }
+        
+        public ICommand AddReservationCommand { get; }
+        public ICommand CancelReservationCommand { get; }
+        public ICommand SetPopulatedCommand { get; }
+        public ICommand ConfirmReservationCommand { get; }
+
+
+        #region BildingToXaml
+        public decimal CalculatedPrice
+        {
+            get => _calculatedPrice;
+            set
+            {
+                _calculatedPrice = value;
+                OnPropertyChanged(nameof(CalculatedPrice));
+            }
         }
 
         public Nomer SelectedNomer
@@ -49,6 +73,7 @@ namespace Data_Management_Service.PageViewModel
             {
                 _selectedNomer = value;
                 OnPropertyChanged(nameof(SelectedNomer));
+                UpdateCalculatedPrice();
             }
         }
 
@@ -69,6 +94,7 @@ namespace Data_Management_Service.PageViewModel
             {
                 _arrivalDate = value;
                 OnPropertyChanged(nameof(ArrivalDate));
+                UpdateCalculatedPrice();
             }
         }
 
@@ -79,6 +105,7 @@ namespace Data_Management_Service.PageViewModel
             {
                 _departureDate = value;
                 OnPropertyChanged(nameof(DepartureDate));
+                UpdateCalculatedPrice();
             }
         }
 
@@ -91,11 +118,7 @@ namespace Data_Management_Service.PageViewModel
                 OnPropertyChanged(nameof(NumberOfPersons));
             }
         }
-
-        public ICommand AddReservationCommand { get; }
-        public ICommand CancelReservationCommand { get; }
-        public ICommand SetPopulatedCommand { get; }
-
+        #endregion
         private void AddReservation(object obj)
         {
             // Проверяем обязательные поля
@@ -138,7 +161,8 @@ namespace Data_Management_Service.PageViewModel
                 ArrivalDate = ArrivalDate.Value, // Дата приезда
                 DepartureDate = DepartureDate.Value, // Дата отъезда
                 NumberOfPersons = NumberOfPersons, // Количество человек
-                Status = Status.New // Статус нового бронирования
+                Status = Status.New, // Статус нового бронирования
+                TotalPrice = CalculatedPrice
             };
 
             // Проверяем, что номер не равен null (на всякий случай, но это не должно происходить, если все корректно)
@@ -165,7 +189,22 @@ namespace Data_Management_Service.PageViewModel
             DepartureDate = null;
             NumberOfPersons = 0;
         }
+        private void ConfirmReservation(object obj)
+        {
+            if (SelectedReservation == null)
+            {
+                OnError?.Invoke("Пожалуйста, выберите бронирование.");
+                return;
+            }
+            SelectedReservation.Status = Status.Verified;
+            SelectedReservation.Nomer.Status = false;
 
+            _context.Reservations.Update(SelectedReservation);
+            _context.Nomers.Update(SelectedReservation.Nomer);
+            _context.SaveChanges();
+
+            OnSuccess?.Invoke("Бронирование подтверждено!");
+        }
 
         private void SetPopulated(object obj)
         {
@@ -209,6 +248,18 @@ namespace Data_Management_Service.PageViewModel
             ReservationList.Remove(SelectedReservation);
             OnSuccess?.Invoke("Бронирование отменено!");
         }
+        private void UpdateCalculatedPrice()
+        {
+            if (SelectedNomer != null && ArrivalDate.HasValue && DepartureDate.HasValue && ArrivalDate < DepartureDate)
+            {
+                CalculatedPrice = (decimal)(DepartureDate.Value - ArrivalDate.Value).TotalDays * SelectedNomer.Cost;
+            }
+            else
+            {
+                CalculatedPrice = 0;
+            }
+        }
+
 
     }
 
