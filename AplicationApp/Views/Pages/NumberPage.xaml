@@ -23,7 +23,7 @@
                 <Button Content="Изменить" 
                     Margin="0,30,0,0" 
                     Foreground="White"
-                    x:Name="EditNomer" Click="btn2_Click" Command="{Binding EditNomerCommand}"/>
+                    x:Name="EditNomer" Click="btn2_Click" />
 
                 <Button Content="Удалить" 
                     Margin="0,30,0,0" 

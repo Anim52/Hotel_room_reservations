@@ -138,8 +138,21 @@ namespace Data_Management_Service.ViewsModel
             {
                 _selectedNomer = value;
                 OnPropertyChanged(nameof(SelectedNomer));
+
+                // Если выбран номер — подставляем его значения в поля
+                if (_selectedNomer != null)
+                {
+                    Number = _selectedNomer.Number;
+                    Floor = _selectedNomer.Floor;
+                    Cost = _selectedNomer.Cost;
+                    Description = _selectedNomer.Description;
+                    SelectedTypeNumder = _selectedNomer.TypeNumder;
+                    ImagePath = _selectedNomer.ImagePath;
+                }
             }
         }
+
+
 
         // Команды
         public ICommand AddNomerCommand { get; }

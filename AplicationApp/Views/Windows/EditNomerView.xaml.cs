@@ -28,10 +28,18 @@ namespace AplicationApp.Views.Windows
             InitializeComponent();
             if (SelectedNomer != null)
             {
-                AddNomerViewModel editNomerViewModel = new AddNomerViewModel(new FileDialogService());
+                var editNomerViewModel = new AddNomerViewModel(new FileDialogService())
+                {
+                    SelectedNomer = SelectedNomer,
+                    Number = SelectedNomer.Number,
+                    Floor = SelectedNomer.Floor,
+                    Cost = SelectedNomer.Cost,
+                    Description = SelectedNomer.Description,
+                    SelectedTypeNumder = SelectedNomer.TypeNumder,
+                    ImagePath = SelectedNomer.ImagePath
+                };
+
                 this.DataContext = editNomerViewModel;
-
-
             }
             else
             {

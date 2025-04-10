@@ -26,10 +26,11 @@ namespace AplicationApp.Views.Pages
     /// </summary>
     public partial class NumberPage : UserControl
     {
+        AddNomerViewModel viewModel;
         public NumberPage()
         {
             InitializeComponent();
-            var viewModel = new AddNomerViewModel(new FileDialogService())
+             viewModel = new AddNomerViewModel(new FileDialogService())
             {
                 OnError = message => MessageBox.Show(message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error),
                 OnSuccess = message => MessageBox.Show(message, "Успех", MessageBoxButton.OK, MessageBoxImage.Information),
@@ -64,22 +65,14 @@ namespace AplicationApp.Views.Pages
         }
 
 
-        private Nomer _selectedNomer;
-        public Nomer SelectedNomer
-        {
-            get => _selectedNomer;
-            set
-            {
-                _selectedNomer = value;
-            }
-        }
+      
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
 
-            if (SelectedNomer == null)
+            if (viewModel.SelectedNomer == null)
             {
-                MessageBox.Show("Выберите номер для редактирования: " + (SelectedNomer == null ? "null" : "не null"),
+                MessageBox.Show("Выберите номер для редактирования: " + (viewModel.SelectedNomer == null ? "null" : "не null"),
                         "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -90,7 +83,7 @@ namespace AplicationApp.Views.Pages
             Overlay.Visibility = Visibility.Visible;
 
             // Открываем окно редактирования номера с передачей SelectedNomer
-            var editNomerWindow = new EditNomerView(SelectedNomer);
+            var editNomerWindow = new EditNomerView(viewModel.SelectedNomer);
             editNomerWindow.Owner = Window.GetWindow(this);
             editNomerWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             editNomerWindow.ShowDialog();
