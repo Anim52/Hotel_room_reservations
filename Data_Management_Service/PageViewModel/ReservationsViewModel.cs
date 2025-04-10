@@ -11,6 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Aspose.Pdf;
+using Aspose.Pdf.Text;
+using System;
+using System.IO;
 
 namespace Data_Management_Service.PageViewModel
 {
@@ -178,10 +182,15 @@ namespace Data_Management_Service.PageViewModel
 
             // Добавляем бронирование в список на клиенте
             ReservationList.Add(newReservation);
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Бронь.pdf");
+            GenerateReservationPdf(newReservation, filePath);
+
 
             // Вызываем событие успешного добавления
             OnReservationAdded?.Invoke(newReservation);
             OnSuccess?.Invoke("Бронирование успешно добавлено!");
+            
+
 
             // Сброс полей после добавления
             SelectedNomer = null;
@@ -258,6 +267,61 @@ namespace Data_Management_Service.PageViewModel
             {
                 CalculatedPrice = 0;
             }
+        }
+
+        public void GenerateReservationPdf(Reservations reservation, string filePath)
+        {
+            var doc = new Document();
+            var page = doc.Pages.Add();
+
+            // Заголовок
+            var title = new TextFragment("Подтверждение бронирования")
+            {
+                TextState = { FontSize = 20, FontStyle = FontStyles.Bold },
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = { Bottom = 20 }
+            };
+            page.Paragraphs.Add(title);
+
+            // Разделительная линия
+            page.Paragraphs.Add(new TextFragment("--------------------------------------------------------"));
+
+            // Информация о бронировании
+            AddField(page, "Номер комнаты:", reservation.Nomer?.Number.ToString() ?? "N/A");
+            AddField(page, "Гость:", $"{reservation.Guests?.FirstName ?? "N/A"} {reservation.Guests?.LastName ?? ""}");
+            AddField(page, "Дата бронирования:", reservation.DateReservations.ToString("dd.MM.yyyy HH:mm"));
+            AddField(page, "Дата заезда:", reservation.ArrivalDate.ToString("dd.MM.yyyy"));
+            AddField(page, "Дата выезда:", reservation.DepartureDate.ToString("dd.MM.yyyy"));
+            AddField(page, "Количество гостей:", reservation.NumberOfPersons.ToString());
+            AddField(page, "Статус:", reservation.Status.ToString());
+            AddField(page, "Общая стоимость:", reservation.TotalPrice.ToString("N0") + " руб." ?? "Не указано");
+
+            // Разделительная линия
+            page.Paragraphs.Add(new TextFragment("--------------------------------------------------------"));
+            page.Paragraphs.Add(new TextFragment("Если возникнут какие-то вопросы обратитесь к администратору"));
+
+            // Дата печати
+            var dateGenerated = new TextFragment($"Документ создан: {DateTime.Now:dd.MM.yyyy HH:mm}")
+            {
+                TextState = { FontSize = 10, FontStyle = FontStyles.Italic },
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = { Top = 20 }
+            };
+            page.Paragraphs.Add(dateGenerated);
+
+            // Сохраняем PDF
+            doc.Save(filePath);
+        }
+
+        // Хелпер для добавления строки в виде "Название: значение"
+        private void AddField(Page page, string label, string value)
+        {
+            var text = new TextFragment($"{label} {value}")
+            {
+                TextState = { FontSize = 12, Font = FontRepository.FindFont("Arial") },
+                Margin = { Top = 8, Bottom = 4 }
+            };
+            page.Paragraphs.Add(text);
         }
 
 
