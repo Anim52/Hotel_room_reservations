@@ -31,6 +31,8 @@ namespace Data_Management_Service.PageViewModel
 
         public ObservableCollection<Nomer> NomerList { get; set; }
         public ObservableCollection<Reservations> ReservationList { get; set; }
+        public ObservableCollection<Reservations> UserReservationList { get; set; }
+
 
         // Делегаты для сообщений
         public Action<string> OnError { get; set; }
@@ -51,8 +53,24 @@ namespace Data_Management_Service.PageViewModel
                     .Include(r => r.Nomer)
                     .Include(r => r.Guests)
                     .ToList());
+
+            ReservationList = new ObservableCollection<Reservations>(_context.Reservations
+                    .Include(r => r.Guests)
+                    .Include(r => r.Nomer)
+                     .ToList());
+
+            var currentUserId = SessionService.CurrentUserId;
+
+            UserReservationList = new ObservableCollection<Reservations>(
+                _context.Reservations
+                    .Include(r => r.Guests)
+                    .Include(r => r.Nomer)
+                    .Where(r => r.Guests.Id == currentUserId)
+                    .ToList()
+            );
+
         }
-        
+
         public ICommand AddReservationCommand { get; }
         public ICommand CancelReservationCommand { get; }
         public ICommand SetPopulatedCommand { get; }

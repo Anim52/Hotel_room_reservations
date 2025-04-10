@@ -35,20 +35,19 @@
         </Grid>
 
         <Grid Grid.Column="1">
-            <ListBox ItemsSource="{Binding NomerList,UpdateSourceTrigger=PropertyChanged}" 
-                 SelectedItem="{Binding SelectedNomer,Mode=TwoWay}"
-                 
-                 Background="Transparent">
+            <ListBox ItemsSource="{Binding NomerList, UpdateSourceTrigger=PropertyChanged}" 
+SelectedItem="{Binding SelectedNomer, Mode=TwoWay}"
+Background="Transparent">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="10" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Background="White">
                             <DockPanel>
                                 <Image Source="{Binding ImagePath}"
-                             Width="120" Height="100" 
-                             Stretch="UniformToFill" 
-                             Margin="10" 
-                             VerticalAlignment="Center"
-                              HorizontalAlignment="Left"/>
+                  Width="120" Height="100" 
+                  Stretch="UniformToFill" 
+                  Margin="10" 
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Left"/>
 
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock Text="Номер:" FontWeight="Bold" Foreground="#A98743"/>
@@ -56,6 +55,9 @@
 
                                     <TextBlock Text="Этаж:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
                                     <TextBlock Text="{Binding Floor}" FontSize="16"/>
+
+                                    <TextBlock Text="Тип номера:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
+                                    <TextBlock Text="{Binding TypeNumder}" FontSize="16"/>
 
                                     <TextBlock Text="Стоимость:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
                                     <TextBlock Text="{Binding Cost}" FontSize="16"/>

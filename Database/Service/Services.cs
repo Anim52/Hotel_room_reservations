@@ -29,7 +29,6 @@ namespace Database.Service
         public string Status { get; set; } = "В обработке";
         public User User { get; set; }
 
-        // Новый проперт для отображения ФИО с инициалами
         public string Fullname => $"{User.Lastname} {User.Firstname[0]}. {User.Middlename[0]}.";
 
     }
