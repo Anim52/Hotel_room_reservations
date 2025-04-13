@@ -28,10 +28,23 @@ namespace Data_Management_Service.PageViewModel
         private DateTime? _departureDate;
         private int _numberOfPersons;
         private decimal _calculatedPrice;
+        private string _selectedRoomType; // Свойство для выбранного типа номера
+        private ObservableCollection<Nomer> _filteredNomerList; // Список отфильтрованных номеров
 
         public ObservableCollection<Nomer> NomerList { get; set; }
         public ObservableCollection<Reservations> ReservationList { get; set; }
         public ObservableCollection<Reservations> UserReservationList { get; set; }
+        public ObservableCollection<TypeNumder> RoomTypes { get; set; }
+
+        public ObservableCollection<Nomer> FilteredNomerList // Свойство для списка отфильтрованных номеров
+        {
+            get => _filteredNomerList;
+            set
+            {
+                _filteredNomerList = value;
+                OnPropertyChanged(nameof(FilteredNomerList));
+            }
+        }
 
 
         // Делегаты для сообщений
@@ -48,6 +61,8 @@ namespace Data_Management_Service.PageViewModel
             ConfirmReservationCommand = new RelayCommand(ConfirmReservation);
 
             NomerList = new ObservableCollection<Nomer>(_context.Nomers.Where(n => n.Status).ToList());
+            SelectedRoomType = "Все"; // По умолчанию показываем все номера
+            FilteredNomerList = new ObservableCollection<Nomer>(NomerList); // Изначально показываем все номера
             ReservationList = new ObservableCollection<Reservations>(
                 _context.Reservations
                     .Include(r => r.Nomer)
@@ -68,6 +83,9 @@ namespace Data_Management_Service.PageViewModel
                     .Where(r => r.Guests.Id == currentUserId)
                     .ToList()
             );
+            RoomTypes = new ObservableCollection<TypeNumder>(
+    Enum.GetValues(typeof(TypeNumder)).Cast<TypeNumder>());
+
 
         }
 
@@ -140,6 +158,34 @@ namespace Data_Management_Service.PageViewModel
                 OnPropertyChanged(nameof(NumberOfPersons));
             }
         }
+   
+    public string SelectedRoomType
+        {
+            get => _selectedRoomType;
+            set
+            {
+                _selectedRoomType = value;
+                OnPropertyChanged(nameof(SelectedRoomType));
+                FilterNomerList(); // Фильтруем список номеров при изменении типа
+            }
+        }
+        private void FilterNomerList()
+        {
+            if (SelectedRoomType == "Все")
+            {
+                FilteredNomerList = new ObservableCollection<Nomer>(NomerList);
+            }
+            else if (Enum.TryParse<TypeNumder>(SelectedRoomType, out var selectedType))
+            {
+                FilteredNomerList = new ObservableCollection<Nomer>(
+                    NomerList.Where(n => n.TypeNumder == selectedType)
+                );
+            }
+
+            OnPropertyChanged(nameof(FilteredNomerList));
+        }
+
+
         #endregion
         private void AddReservation(object obj)
         {

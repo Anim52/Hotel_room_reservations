@@ -66,5 +66,7 @@ namespace AplicationApp.Views.Pages
             viewModel.OnSuccess -= ViewModel_OnSuccess;
             viewModel.OnReservationAdded -= ViewModel_OnReservationAdded;
         }
+
+        
     }
 }

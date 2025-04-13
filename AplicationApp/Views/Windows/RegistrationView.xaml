@@ -11,8 +11,9 @@
         Background="Transparent"
         FontFamily="{StaticResource Montserrat}"
         ResizeMode="NoResize"
+        AllowsTransparency="True"
         >
-    <Border CornerRadius="20" Background="#E0E0E0" BorderThickness="2" BorderBrush="Black">
+    <Border CornerRadius="20" Background="#E0E0E0" BorderThickness="0" Margin="1" ClipToBounds="True">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="col1" Width="2*"/>
@@ -37,20 +38,16 @@
 
                 <Button Command="{Binding RegisterCommand}" Content="Registration " HorizontalAlignment="Left" Width="130" Height="55" ></Button>
             </StackPanel>
-            <Grid Grid.Column="1" VerticalAlignment="Stretch">
+            <Grid Grid.Column="1" VerticalAlignment="Stretch" ClipToBounds="True">
 
-                <Border CornerRadius="0,20,20,0">
+                <Border CornerRadius="0,20,20,0" ClipToBounds="True">
                     <Border.Background>
                         <ImageBrush ImageSource="/Assets/Recources/Login.jpg" Stretch="UniformToFill"/>
                     </Border.Background>
                 </Border>
 
                 <StackPanel Background="#80000000" >
-                    <!--<Button Width="200" Height="200">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Assets/Resources/Close.png"/>
-                    </Button.Background>
-                </Button>-->
+                  
                     <TextBlock Text="Уже останавливались у нас?" Foreground="White" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,60,10,0" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Text="Войдите в свой аккаунт, чтобы быстрее оформить бронирование и получить доступ к эксклюзивным предложениям!" FontSize="20" Margin="10,190,10,0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     <Button Content="Login in >>" HorizontalAlignment="Center" Width="130" Height="55" Margin="10,200,10,0"  Foreground="White"  Click="Login_Btn" />

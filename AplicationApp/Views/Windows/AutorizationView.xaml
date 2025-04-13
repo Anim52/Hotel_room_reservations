@@ -11,6 +11,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
+        AllowsTransparency="True"
         >
     <Border CornerRadius="20" Background="#E0E0E0" BorderThickness="2" BorderBrush="Black">
         <Grid>
@@ -25,19 +26,35 @@
                 <TextBox Text="{Binding Password}" Margin="0,0,10,20" Height="50" ></TextBox>
                 <Button Command="{Binding LoginCommand}" Content="Login in" HorizontalAlignment="Left" Width="130" Height="55"></Button>
             </StackPanel>
+            
             <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <StackPanel>
-                    <Border Height="446" CornerRadius="0,20,20,0">
-                        <Border.Background >
-                            <ImageBrush ImageSource="/Assets/Recources/Login.jpg" Stretch="UniformToFill"/>
+                <Grid Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Border CornerRadius="0,20,20,0" ClipToBounds="True">
+                        <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Recources/Login.jpg" Stretch="UniformToFill"/>
                         </Border.Background>
+                        <Grid>
+                            <!-- Картинка -->
+                            
+
+                            <!-- Затемнение поверх -->
+                            <Path Fill="#80000000" 
+              Data="M0,0 L0,450 L775,450 C775,420 785,410 785,380 L785,50 C785,20 775,10 775,0 Z" 
+              ClipToBounds="True"/>
+
+
+
+
+                            <!-- Контент поверх затемнения -->
+                            <StackPanel VerticalAlignment="Center" Margin="10">
+                                <TextBlock Text="Впервые выбираете наш отель?" Foreground="White" FontSize="17" HorizontalAlignment="Center" Margin="10,60,10,0" TextWrapping="Wrap"/>
+                                <TextBlock Text="Регистрация займет всего несколько минут..." FontSize="20" Margin="10,20,10,0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center"/>
+                                <Button Content="Registration >>" HorizontalAlignment="Center" Width="130" Height="55" Margin="10,40,10,0" Foreground="White" Click="Registration_Btn"/>
+                            </StackPanel>
+                        </Grid>
                     </Border>
-                </StackPanel>
-                <StackPanel Background="#80000000" >
-                    <TextBlock Text="Впервые выбираете наш отель?" Foreground="White" FontSize="17" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,60,10,0" TextWrapping="Wrap"></TextBlock>
-                    <TextBlock Text="Впервые выбираете наш отель? Регистрация займет всего несколько минут, и вы сможете наслаждаться комфортом и отличным обслуживанием, которое мы подготовили специально для вас!" Margin="10,60,10,0"  Foreground="White" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <Button Content="Registration >>" HorizontalAlignment="Center" Width="130" Height="55" Margin="10,77,10,0" Foreground="White"   Click="Registration_Btn"/>
-                </StackPanel>
+                </Grid>
+
             </Grid>
         </Grid>
     </Border>
