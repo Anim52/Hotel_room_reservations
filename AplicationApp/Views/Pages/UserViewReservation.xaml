@@ -23,7 +23,7 @@
                 <TextBlock Text="Дата заезда" Margin="0,0,0,10" HorizontalAlignment="Center"/>
                 <DatePicker SelectedDate="{Binding ArrivalDate}" Width="200" Margin="0,0,0,10"/>
                 <TextBlock Text="Дата выезда" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-                <DatePicker SelectedDate="{Binding DepartureDate}" Width="200" Margin="0,0,0,10"/>
+                <DatePicker SelectedDate="{Binding DepartureDate}" Width="200" Margin="0,0,0,11"/>
                 <TextBlock Text="Количество человек" HorizontalAlignment="Center"/>
                 <TextBox Text="{Binding NumberOfPersons}" Width="200" Margin="0,0,0,10"/>
                 <Button Content="Забронировать" 
