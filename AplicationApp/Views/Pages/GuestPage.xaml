@@ -10,7 +10,7 @@
         <TextBlock Text="Список пользователей"
                 FontSize="24"
                 FontWeight="Bold"
-                Foreground="#333"
+                Foreground="#C0C0C0"
                 Margin="10" />
 
         <!-- Список пользователей -->
@@ -57,7 +57,7 @@
              HorizontalAlignment="Right"
              VerticalAlignment="Bottom"
              Margin="10"
-             Width="210"
+             Background="#1E293B" Width="180" Height="50"
              />
     </Grid>
 </UserControl>

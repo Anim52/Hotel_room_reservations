@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AplicationApp"
         mc:Ignorable="d"
         Title="UserMainWindow" Height="780" Width="1200"
-        Background="#E0E0E0"
+        Background="#55687B"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -18,21 +18,21 @@
         </Grid.RowDefinitions>
         <Grid>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Button x:Name="btn1" Width="150" Height="60" Tag="Аккаунт" Click="btn1_Click" Margin="8" Style="{StaticResource MainButton1}">
+                <Button x:Name="btn1" Width="150" Height="60" Tag="Аккаунт" Click="btn1_Click" Margin="8" Style="{StaticResource MainButton1}" Background="#1E293B">
                     <Image Source="/Assets/Recources/Accaunt.png" />
                 </Button>
 
-                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click">
+                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click" Background="#1E293B">
                     <Image Source="/Assets/Recources/Service.png"/>
                 </Button>
-                
-                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click">
+
+                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click" Background="#1E293B">
                     <Image Source="/Assets/Recources/Reservation.png"/>
                 </Button>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="443,0,0,0">
-                    <Button Content="UnLogin" Width="110" Height="60" Name="UnLoginBtn" Click="UnLoginBtn_Click" Margin="5"  FontWeight="Bold"/>
-                    <Button x:Name="Close_btn" Content="❌"  Width="60" Height="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Foreground="Black" Margin="0,0,0,0" Click="Close_btn_Click"/>
+                    <Button Content="UnLogin" Width="110" Height="60" Name="UnLoginBtn" Click="UnLoginBtn_Click" Margin="5"  FontWeight="Bold" Background="#1E293B"/>
+                    <Button x:Name="Close_btn" Content="❌"  Width="60" Height="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#1E293B" HorizontalAlignment="Right" Foreground="Black" Margin="0,0,0,0" Click="Close_btn_Click"/>
 
                 </StackPanel>
             </StackPanel>

@@ -13,7 +13,7 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
                     <TextBlock Text="Описание" FontSize="18" HorizontalAlignment="Center" Margin="0,20,0,10"/>
                     <TextBox  Width="300" Text="{Binding NewRequestDescription, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button  Content="Заказать!"  Margin="0,30,0,0" Command="{Binding CreateRequestCommand}"/>
+                    <Button  Content="Заказать!"  Margin="0,30,0,0" Command="{Binding CreateRequestCommand}" Background="#1E293B" Width="180" Height="50"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

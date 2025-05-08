@@ -15,20 +15,23 @@
         <!-- Левая панель с кнопками -->
         <Grid Grid.Column="0">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label Content="Номера" FontSize="26"/>
+                <Label Content="Номера" FontSize="26" Foreground="#C0C0C0"/>
                 <Button Content="Добавить" 
                 Margin="0,30,0,0"  
                 x:Name="btn1" 
-                Click="btn1_Click"/>
+                Click="btn1_Click"
+                        Background="#1E293B" Width="180" Height="50"/>
                 <Button Content="Изменить" 
                     Margin="0,30,0,0" 
                     Foreground="White"
-                    x:Name="EditNomer" Click="btn2_Click" />
+                    x:Name="EditNomer" Click="btn2_Click" 
+                        Background="#1E293B" Width="180" Height="50"/>
 
                 <Button Content="Удалить" 
                     Margin="0,30,0,0" 
                     Foreground="White"
                     Command="{Binding DeleteNomerCommand}"
+                        Background="#1E293B" Width="180" Height="50"
                 />
 
             </StackPanel>

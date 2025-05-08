@@ -46,5 +46,9 @@ namespace AplicationApp.Views.Windows
                 MessageBox.Show("Выберите номер для редактирования.");
             }
         }
+        private void Close_btn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
