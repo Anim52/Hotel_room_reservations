@@ -13,72 +13,177 @@
         </Grid.ColumnDefinitions>
 
         <!-- Левая панель с кнопками -->
-        <Grid Grid.Column="0">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label Content="Номера" FontSize="26" Foreground="#C0C0C0"/>
+        <Grid Grid.Column="0" Background="#F9F9F9" >
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                <Label Content="Номера" FontSize="28" FontWeight="Bold" Foreground="#6B4E16" HorizontalAlignment="Center" />
+
                 <Button Content="Добавить" 
-                Margin="0,30,0,0"  
-                x:Name="btn1" 
-                Click="btn1_Click"
-                        Background="#1E293B" Width="180" Height="50"/>
+                     Margin="0,30,0,0"  
+                     x:Name="btn1" 
+                     Click="btn1_Click"
+                     Width="180" Height="50"
+                     Background="#A98743" Foreground="White" FontWeight="SemiBold" 
+                     BorderThickness="0" Cursor="Hand"
+                     >
+                    <Button.Effect>
+                        <DropShadowEffect Color="#886B4E16" BlurRadius="8" ShadowDepth="2" Opacity="0.4"/>
+                    </Button.Effect>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#D4AF37" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#A98743" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
                 <Button Content="Изменить" 
-                    Margin="0,30,0,0" 
-                    Foreground="White"
-                    x:Name="EditNomer" Click="btn2_Click" 
-                        Background="#1E293B" Width="180" Height="50"/>
+                     Margin="0,30,0,0" 
+                     Foreground="White"
+                     x:Name="EditNomer" Click="btn2_Click" 
+                     Width="180" Height="50"
+                     Background="#7B6E42" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#886B4E16" BlurRadius="6" ShadowDepth="1" Opacity="0.3"/>
+                    </Button.Effect>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#B59F4C" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#7B6E42" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
 
                 <Button Content="Удалить" 
-                    Margin="0,30,0,0" 
-                    Foreground="White"
-                    Command="{Binding DeleteNomerCommand}"
-                        Background="#1E293B" Width="180" Height="50"
-                />
-
+                     Margin="0,30,0,0" 
+                     Foreground="White"
+                     Command="{Binding DeleteNomerCommand}"
+                     Width="180" Height="50"
+                     Background="#D9534F" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#88222222" BlurRadius="6" ShadowDepth="2" Opacity="0.4"/>
+                    </Button.Effect>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#FF6B6B" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="#D9534F" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Column="1">
+        <!-- Правая часть с ListBox -->
+        <Grid Grid.Column="1" Background="#FFF8E1" >
             <ListBox ItemsSource="{Binding NomerList, UpdateSourceTrigger=PropertyChanged}" 
-SelectedItem="{Binding SelectedNomer, Mode=TwoWay}"
-Background="Transparent">
+          SelectedItem="{Binding SelectedNomer, Mode=TwoWay}"
+          Background="Transparent"
+          BorderThickness="0"
+          ScrollViewer.VerticalScrollBarVisibility="Auto"
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+          MaxHeight="600">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="10"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border x:Name="Bd" 
+                                         Background="White" 
+                                         CornerRadius="12" 
+                                         BorderThickness="1" 
+                                         BorderBrush="#E0C080"
+                                         SnapsToDevicePixels="true"
+                                         Padding="10">
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#FFE6D2"/>
+                                            <Setter TargetName="Bd" Property="BorderBrush" Value="#D4AF37"/>
+                                            <Setter TargetName="Bd" Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="#FFD4AF37" BlurRadius="12" ShadowDepth="0" Opacity="0.6"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Bd" Property="Background" Value="#FFF3E0"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border Margin="10" Padding="10" BorderBrush="Gray" BorderThickness="1" CornerRadius="10" Background="White">
-                            <DockPanel>
-                                <Image Source="{Binding ImagePath}"
-                  Width="120" Height="100" 
-                  Stretch="UniformToFill" 
-                  Margin="10" 
-                  VerticalAlignment="Center"
-                  HorizontalAlignment="Left"/>
+                        <DockPanel>
+                            <Image Source="{Binding ImagePath}"
+                                Width="120" Height="100" 
+                                Stretch="UniformToFill" 
+                                Margin="10" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"/>
+                            <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                                <TextBlock Text="Номер:" FontWeight="Bold" Foreground="#A98743"/>
+                                <TextBlock Text="{Binding Number}" FontSize="18"/>
 
-                                <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="Номер:" FontWeight="Bold" Foreground="#A98743"/>
-                                    <TextBlock Text="{Binding Number}" FontSize="18"/>
+                                <TextBlock Text="Этаж:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
+                                <TextBlock Text="{Binding Floor}" FontSize="16"/>
 
-                                    <TextBlock Text="Этаж:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
-                                    <TextBlock Text="{Binding Floor}" FontSize="16"/>
+                                <TextBlock Text="Тип номера:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
+                                <TextBlock Text="{Binding TypeNumder}" FontSize="16"/>
 
-                                    <TextBlock Text="Тип номера:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
-                                    <TextBlock Text="{Binding TypeNumder}" FontSize="16"/>
+                                <TextBlock Text="Стоимость:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
+                                <TextBlock Text="{Binding Cost}" FontSize="16"/>
 
-                                    <TextBlock Text="Стоимость:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
-                                    <TextBlock Text="{Binding Cost}" FontSize="16"/>
-
-                                    <TextBlock Text="Описание:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
-                                    <TextBlock Text="{Binding Description}" FontSize="16" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </DockPanel>
-                        </Border>
+                                <TextBlock Text="Описание:" FontWeight="Bold" Foreground="#A98743" Margin="0,10,0,0"/>
+                                <TextBlock Text="{Binding Description}" FontSize="16" TextWrapping="Wrap" MaxWidth="400" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
-        
+
         <Border x:Name="Overlay" 
-        Background="#80000000" 
-        Visibility="Collapsed" 
-        Grid.ColumnSpan="2">
+             Background="#80000000" 
+             Visibility="Collapsed" 
+             Grid.ColumnSpan="2">
             <Border.Effect>
                 <BlurEffect Radius="10"/>
             </Border.Effect>

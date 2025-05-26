@@ -5,38 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="680" Width="1100"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        Background="#55687B"
-        >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="11*"/>
-        </Grid.RowDefinitions>
+          Title="MainWindow" Height="680" Width="1100"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    Background="Transparent"
+    >
+    <Border CornerRadius="16" Background="#E0E0E0"  >
         <Grid>
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0" VerticalAlignment="Top">
-                <Button x:Name="btn2" Tag="Номера" Width="247" Height="60" Click="btn2_Click" Margin="8" Style="{StaticResource MainButton1}" Background="#1E293B" >
-                    <Image Source="/Assets/Recources/Numder.png"/>
-                </Button>
-                <Button x:Name="btn3" Tag="Гости" Width="150" Height="60" Background="#1E293B" Margin="8" Style="{StaticResource MainButton1}" Click="btn3_Click">
-                    <Image Source="/Assets/Recources/Guest.png"/>
-                </Button>
-                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Background="#1E293B" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click">
-                    <Image Source="/Assets/Recources/Service.png"/>
-                </Button>
-                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Background="#1E293B" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click">
-                    <Image Source="/Assets/Recources/Reservation.png"/>
-                </Button>
-                
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="Close_btn" Content="❌"  Width="50" HorizontalAlignment="Right" Foreground="Black" Margin="199,0,0,0" Click="Close_btn_Click" Background="#1E293B"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                </StackPanel>
+            <!-- Верхняя панель с кнопками -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,5,0,15" HorizontalAlignment="Left" >
+                <Button x:Name="btn2" Tag="Номера" Width="247" Height="60" Margin="8,0"
+                    Click="btn2_Click" Background="#1E293B" Foreground="White" FontWeight="SemiBold" FontSize="16" 
+                    BorderThickness="0" Cursor="Hand" 
+                    >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        <Image Source="/Assets/Recources/Numder.png" Width="28" Height="28" Margin="0,0,10,0"/>
+                        <!--<TextBlock Text="Номера" VerticalAlignment="Center"/> Если нужно, можно добавить текст-->
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="btn3" Tag="Гости" Width="150" Height="60" Margin="8,0"
+                    Background="#1E293B" Foreground="White" FontWeight="SemiBold" FontSize="16"
+                    Click="btn3_Click" BorderThickness="0" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Assets/Recources/Guest.png" Width="28" Height="28" Margin="0,0,10,0"/>
+                        <!--<TextBlock Text="Гости" VerticalAlignment="Center"/>-->
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8,0"
+                    Background="#1E293B" Foreground="White" FontWeight="SemiBold" FontSize="16"
+                    Click="btn5_Click" BorderThickness="0" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Assets/Recources/Service.png" Width="28" Height="28" Margin="0,0,10,0"/>
+                        <!--<TextBlock Text="Услуги" VerticalAlignment="Center"/>-->
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8,0"
+                    Background="#1E293B" Foreground="White" FontWeight="SemiBold" FontSize="16"
+                    Click="btn6_Click" BorderThickness="0" Cursor="Hand">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/Assets/Recources/Reservation.png" Width="28" Height="28" Margin="0,0,10,0"/>
+                        <!--<TextBlock Text="Бронирование" VerticalAlignment="Center"/>-->
+                    </StackPanel>
+                </Button>
             </StackPanel>
+
+            <!-- Кнопка закрытия, выравнена справа и сверху -->
+            <Button x:Name="Close_btn" Content="❌" Width="50" Height="50"
+                HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,5,5,0"
+                Foreground="White" Background="#EF4444" BorderThickness="0" 
+                FontWeight="Bold" FontSize="20" Cursor="Hand"
+                Click="Close_btn_Click"/>
+
+            <!-- Контент -->
+            <ContentControl x:Name="ContentControlFrame" Grid.Row="1" />
         </Grid>
-        <ContentControl x:Name="ContentControlFrame" Grid.Row="1"/>
-    </Grid>
+    </Border>
 </Window>

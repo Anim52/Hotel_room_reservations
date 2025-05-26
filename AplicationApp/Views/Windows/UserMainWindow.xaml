@@ -5,38 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp"
         mc:Ignorable="d"
-        Title="UserMainWindow" Height="780" Width="1200"
-        Background="#55687B"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
-        >
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="12*"/>
-        </Grid.RowDefinitions>
+           Title="UserMainWindow" Height="780" Width="1200"
+    Background="Transparent"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    AllowsTransparency="True" Cursor=""
+    >
+    <Window.Resources>
+        <DropShadowEffect x:Key="DropShadowEffect"
+                  Color="Black"
+                  BlurRadius="10"
+                  ShadowDepth="2"
+                  Opacity="0.3"/>
+    </Window.Resources>
+    <Border CornerRadius="20" Background="#FAFAFA" BorderBrush="#D1D5DB" BorderThickness="1" 
+        SnapsToDevicePixels="True">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="2" Opacity="0.3"/>
+        </Border.Effect>
         <Grid>
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Button x:Name="btn1" Width="150" Height="60" Tag="Аккаунт" Click="btn1_Click" Margin="8" Style="{StaticResource MainButton1}" Background="#1E293B">
-                    <Image Source="/Assets/Recources/Accaunt.png" />
-                </Button>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Button x:Name="btn5" Width="150" Height="60" Tag="Услуги" Margin="8" Style="{StaticResource MainButton1}" Click="btn5_Click" Background="#1E293B">
-                    <Image Source="/Assets/Recources/Service.png"/>
-                </Button>
-
-                <Button x:Name="btn6" Width="220" Height="60" Tag="Бронирование" Margin="8" Style="{StaticResource MainButton1}" Click="btn6_Click" Background="#1E293B">
-                    <Image Source="/Assets/Recources/Reservation.png"/>
-                </Button>
-                
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="443,0,0,0">
-                    <Button Content="UnLogin" Width="110" Height="60" Name="UnLoginBtn" Click="UnLoginBtn_Click" Margin="5"  FontWeight="Bold" Background="#1E293B"/>
-                    <Button x:Name="Close_btn" Content="❌"  Width="60" Height="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#1E293B" HorizontalAlignment="Right" Foreground="Black" Margin="0,0,0,0" Click="Close_btn_Click"/>
-
+            <!-- Верхняя панель -->
+            <DockPanel Background="#1E293B" Height="70" LastChildFill="False" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10,0">
+                    <Button x:Name="btn1" Width="150" Height="50" Tag="Аккаунт" Click="btn1_Click" Margin="5,10" Style="{StaticResource MainButton1}" Background="#334155">
+                        <Image Source="/Assets/Recources/Accaunt.png" Height="30"/>
+                    </Button>
+                    <Button x:Name="btn5" Width="150" Height="50" Tag="Услуги" Click="btn5_Click" Margin="5,10" Style="{StaticResource MainButton1}" Background="#334155">
+                        <Image Source="/Assets/Recources/Service.png" Height="30"/>
+                    </Button>
+                    <Button x:Name="btn6" Width="220" Height="50" Tag="Бронирование" Click="btn6_Click" Margin="5,10" Style="{StaticResource MainButton1}" Background="#334155">
+                        <Image Source="/Assets/Recources/Reservation.png" Height="30"/>
+                    </Button>
                 </StackPanel>
-            </StackPanel>
+
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Content="UnLogin" Width="110" Height="50" Name="UnLoginBtn" Click="UnLoginBtn_Click" Margin="5,10" FontWeight="Bold" Background="#334155" Foreground="White"/>
+                    <Button x:Name="Close_btn" Content="❌" Width="50" Height="50" Click="Close_btn_Click" Margin="5,10" Background="#EF4444" Foreground="White" FontSize="18" FontWeight="Bold"/>
+                </StackPanel>
+            </DockPanel>
+
+            <!-- Основной контент -->
+            <Grid Grid.Row="1">
+                <!-- Нижний слой: приветствие -->
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0">
+                    <Image Source="\Assets\Recources\Hello.png" Width="400" Margin="0,0,0,30"/>
+                    <TextBlock FontSize="32" FontFamily="{StaticResource Montserrat}" TextAlignment="Center" Foreground="#1F2937" TextWrapping="Wrap" MaxWidth="900">
+        <Run Text="Добро пожаловать в систему бронирования."/>
+        <LineBreak/>
+        <Run Text="Вы можете начать поиск и бронирование номера прямо сейчас."/>
+                    </TextBlock>
+                </StackPanel>
+
+                <!-- Верхний слой: сюда загружаются страницы -->
+                <ContentControl x:Name="ContentControlFrame"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                
+                Background="Transparent"/>
+            </Grid>
         </Grid>
-        <ContentControl x:Name="ContentControlFrame" Grid.Row="1"/>
-    </Grid>
+    </Border>
 </Window>

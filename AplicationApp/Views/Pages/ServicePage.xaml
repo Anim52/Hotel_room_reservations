@@ -5,17 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AplicationApp.Views.Pages"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#E0E0E0">
     <Grid>
-        <Grid>
-            <StackPanel>
-                <Label Content="Хотите заказать услугу?" FontSize="26" HorizontalAlignment="Center" Margin="0,70,0,0"/>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40">
-                    <TextBlock Text="Описание" FontSize="18" HorizontalAlignment="Center" Margin="0,20,0,10"/>
-                    <TextBox  Width="300" Text="{Binding NewRequestDescription, UpdateSourceTrigger=PropertyChanged}"/>
-                    <Button  Content="Заказать!"  Margin="0,30,0,0" Command="{Binding CreateRequestCommand}" Background="#1E293B" Width="180" Height="50"/>
-                </StackPanel>
+        <Border CornerRadius="20" Background="White" Padding="40" Margin="60">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="4" Opacity="0.3"/>
+            </Border.Effect>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <TextBlock Text="Хотите заказать услугу?" FontSize="28" FontWeight="Bold" Foreground="#1E293B" Margin="0,0,0,30" TextAlignment="Center"/>
+
+                <TextBlock Text="Опишите свою услугу:" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                <TextBox Width="400" Height="100" TextWrapping="Wrap" AcceptsReturn="True" FontSize="16"
+                      Text="{Binding NewRequestDescription, UpdateSourceTrigger=PropertyChanged}" 
+                      Padding="10" BorderBrush="#94A3B8" BorderThickness="1" Background="#F0F0F0"/>
+
+                <Button Content="🛎 Заказать услугу" Margin="0,30,0,0" Width="220" Height="55" 
+                     FontSize="16" FontWeight="Bold" Foreground="White"
+                     Background="#3B82F6" BorderBrush="#2563EB" BorderThickness="1"
+                     Command="{Binding CreateRequestCommand}">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.4"/>
+                    </Button.Effect>
+                </Button>
             </StackPanel>
-        </Grid>
+        </Border>
     </Grid>
 </UserControl>

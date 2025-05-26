@@ -9,15 +9,16 @@
         <Setter Property="Height" Value="45"/>
         <Setter Property="Width" Value="200"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Background" Value="#4A90E2"/>
-        <!-- Нежно-синий фон -->
-        <Setter Property="BorderBrush" Value="#4A90E2"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <!-- Используем Border для применения CornerRadius -->
+        <Setter Property="Background" Value="Black"/>
+        <!-- Цвет границы -->
+
+        <!-- Используем Border для CornerRadius -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                    <Border Background="{TemplateBinding Background}" 
+                     
+                     CornerRadius="15">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                 </ControlTemplate>
@@ -26,13 +27,13 @@
         <Style.Triggers>
             <!-- Эффект наведения -->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#357ABD"/>
-                <!-- Тёмно-синий при наведении -->
+                <Setter Property="Background" Value="#333333"/>
+                <!-- Более светлый черный при наведении -->
             </Trigger>
             <!-- Эффект нажатия -->
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="#2C6A9D"/>
-                <!-- Ещё более тёмный синий при нажатии -->
+                <Setter Property="Background" Value="#000000"/>
+                <!-- Сам черный при нажатии -->
             </Trigger>
         </Style.Triggers>
     </Style>

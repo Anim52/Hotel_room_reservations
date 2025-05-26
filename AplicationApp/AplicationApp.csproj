@@ -13,6 +13,7 @@
     <None Remove="Assets\Recources\Accaunt.png" />
     <None Remove="Assets\Recources\default.jpg" />
     <None Remove="Assets\Recources\Guest.png" />
+    <None Remove="Assets\Recources\Hello.png" />
     <None Remove="Assets\Recources\Ico.ico" />
     <None Remove="Assets\Recources\Login.jpg" />
     <None Remove="Assets\Recources\Logo.jpg" />
@@ -34,6 +35,7 @@
     </Resource>
     <Resource Include="Assets\Recources\default.jpg" />
     <Resource Include="Assets\Recources\Guest.png" />
+    <Resource Include="Assets\Recources\Hello.png" />
     <Resource Include="Assets\Recources\Ico.ico" />
     <Resource Include="Assets\Recources\Login.jpg" />
     <Resource Include="Assets\Recources\Logo.jpg" />

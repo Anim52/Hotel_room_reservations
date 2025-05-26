@@ -5,52 +5,96 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp.Views.Windows"
         mc:Ignorable="d"
-        Title="NumberAdd" Height="650" Width="800"
-        WindowStyle="None"
-        ResizeMode="NoResize"
-        Background="#55687B">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="22*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <Button   Click="close_Click" Width="45" Height="45" Content="✕" HorizontalAlignment="Right" Foreground="Red" Background="#1E293B"/>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="0">
-            <Image Source="{Binding ImagePath}" VerticalAlignment="Center" Width="500" Height="300" Stretch="Uniform" Margin="5"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">
-            <TextBlock Text="Номер:" VerticalAlignment="Center" Margin="5" Foreground="White" FontSize="18"/>
-            <TextBox Grid.Row="0" Text="{Binding Number}" Margin="5"/>
-            <Button Content="Выбрать фото" Command="{Binding SelectImageCommand}" Width="180" Height="50" Margin="5" Background="#1E293B"/>
+           Title="NumberAdd" Height="650" Width="800"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    Background="Transparent">
+    <Border Background="#F5F5F5" CornerRadius="16" Padding="10" BorderBrush="#CCCCCC" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <TextBlock Text="Этаж:" VerticalAlignment="Center" Margin="5" FontSize="18" Foreground="White"/>
-            <TextBox Text="{Binding Floor}" Margin="5" />
+            <!-- Верхняя панель -->
+            <DockPanel Grid.Row="0" LastChildFill="False" Margin="0,5,0,10">
+                <TextBlock Text="Добавление номера" 
+                       FontSize="22" FontWeight="Bold" 
+                       VerticalAlignment="Center" 
+                       Foreground="#37474F"
+                       Margin="10,0,0,0"/>
+                <Button Content="✕" 
+                    Click="close_Click"
+                    Width="40" Height="40"
+                    Foreground="White"
+                    Background="#D32F2F"
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Margin="0,0,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    DockPanel.Dock="Right"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    />
+            </DockPanel>
 
-            <TextBlock Text="Стоимость:" VerticalAlignment="Center" Margin="5" FontSize="18" Foreground="White"/>
-            <TextBox Text="{Binding Cost}" Margin="5" />
+            <!-- Основная форма -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <Grid Margin="20,0,20,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <!-- Фото -->
+                    <Image Grid.Column="0" 
+                       Source="{Binding ImagePath}" 
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Width="300" Height="200" 
+                       Stretch="Uniform" 
+                       Margin="10"/>
 
-            <TextBlock Text="Описание:" VerticalAlignment="Center" Margin="5" FontSize="18" Foreground="White"/>
-            <TextBox  Text="{Binding Description}" Margin="5" />
+                    <!-- Поля -->
+                    <StackPanel Grid.Column="1" Margin="20,0,0,0">
 
-            <TextBlock Text="Тип номера:" VerticalAlignment="Center" Margin="5" FontSize="18" Foreground="White"/>
-            <ComboBox 
-                              
-              ItemsSource="{Binding TypeNumderList}" 
-              SelectedItem="{Binding SelectedTypeNumder}" 
-              Margin="5"/>
-            <!-- Кнопка Добавить -->
-            <Button Content="Добавить" 
-            Grid.Row="6" Grid.Column="0" 
-            Command="{Binding AddNomerCommand}" 
-            Margin="5" 
-                    Background="#1E293B" Width="180" Height="50"/>
-        </StackPanel>
-    </Grid>
+                        <TextBlock Text="Номер:" FontSize="16" Margin="0,10,0,0"/>
+                        <TextBox Text="{Binding Number}" Margin="0,5,0,0" Padding="6"/>
+
+                        <Button Content="Выбрать фото" 
+                            Command="{Binding SelectImageCommand}" 
+                            Width="180" Height="40" 
+                            Margin="0,10,0,0" 
+                            HorizontalAlignment="Left"/>
+
+                        <TextBlock Text="Этаж:" FontSize="16" Margin="0,10,0,0"/>
+                        <TextBox Text="{Binding Floor}" Margin="0,5,0,0" Padding="6"/>
+
+                        <TextBlock Text="Стоимость:" FontSize="16" Margin="0,10,0,0"/>
+                        <TextBox Text="{Binding Cost}" Margin="0,5,0,0" Padding="6"/>
+
+                        <TextBlock Text="Описание:" FontSize="16" Margin="0,10,0,0"/>
+                        <TextBox Text="{Binding Description}" Margin="0,5,0,0" Height="80" TextWrapping="Wrap" AcceptsReturn="True" Padding="6"/>
+
+                        <TextBlock Text="Тип номера:" FontSize="16" Margin="0,10,0,0"/>
+                        <ComboBox ItemsSource="{Binding TypeNumderList}" 
+                              SelectedItem="{Binding SelectedTypeNumder}" 
+                              Margin="0,5,0,0" Height="30" Padding="4"/>
+
+                        <Button Content="Добавить"
+                            Command="{Binding AddNomerCommand}"
+                            Width="200" Height="50"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Center"
+                            Background="#1976D2"
+                            Foreground="White"
+                            FontWeight="SemiBold"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </Window>
