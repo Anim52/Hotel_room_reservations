@@ -1,5 +1,12 @@
 # Бронирование номеров в отелe
 
+![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white)
+	![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+ ![AMD](https://img.shields.io/badge/AMD-%23000000.svg?style=for-the-badge&logo=amd&logoColor=white)
+ ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
+![Windows 11](https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white)
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+
 Бронирование номеров в отелe — это настольное приложение на платформе Windows, разработанное с использованием WPF (Windows Presentation Foundation) и языка программирования C#. Оно предназначено для автоматизации повседневных операций в отелях и гостиницах: от управления номерами и клиентами до ведения истории бронирований и анализа загруженности.
 
 Приложение имеет интуитивно понятный графический интерфейс, реализованную логику по паттерну MVVM, и взаимодействует с базой данных через Entity Framework Core, обеспечивая надёжное хранение данных.
