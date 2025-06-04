@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Data_Management_Service.OtherViews
 {
+    /// <summary>
+    /// Сервис для аутентификации и регистрации пользователей.
+    /// </summary>
     public class AuthService
     {
         private readonly SqlServerContext _context;
 
-        // Конструктор по умолчанию
+        // <summary>
+        /// Конструктор по умолчанию. Создает новый экземпляр контекста базы данных.
+        /// </summary>
         public AuthService()
         {
             _context = new SqlServerContext();

@@ -13,15 +13,35 @@ using System.Windows.Input;
 
 namespace Data_Management_Service.PageViewModel
 {
+    /// <summary>
+    /// ViewModel для управления заявками на услуги (Service).
+    /// </summary>
     public class ServiceModelPage : BaseViewModel
     {
+        /// <summary>
+        /// Контекст базы данных.
+        /// </summary>
         private readonly SqlServerContext _context;
+        /// <summary>
+        /// Выбранная заявка.
+        /// </summary>
         private Services _selectedService;
+        /// <summary>
+        /// Описание новой заявки.
+        /// </summary>
         private string _newRequestDescription;
+        /// <summary>
+        /// Признак, является ли пользователь администратором.
+        /// </summary>
         private bool _isAdmin;
+        /// <summary>
+        /// ID текущего пользователя.
+        /// </summary>
         private Guid _currentUserId;
 
-        // Добавлено свойство для отображения ФИО
+        /// <summary>
+        /// Текущий пользователь (для отображения ФИО).
+        /// </summary>
         private User _currentUser;
 
         // Действия для отображения сообщений
@@ -71,7 +91,9 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
-        // Коллекция для отображения заявок
+        /// <summary>
+        /// Коллекция заявок.
+        /// </summary>
         public ObservableCollection<Services> ServiceRequests { get; set; }
 
         // Новый проперт для отображения ФИО с инициалами
@@ -79,12 +101,22 @@ namespace Data_Management_Service.PageViewModel
             ? $"{_currentUser.Lastname} {_currentUser.Firstname[0]}. {_currentUser.Middlename[0]}."
             : string.Empty;
 
-        // Команды
+        /// <summary>
+        /// Команда создания новой заявки.
+        /// </summary>
         public ICommand CreateRequestCommand { get; }
+        /// <summary>
+        /// Команда завершения заявки.
+        /// </summary>       
         public ICommand CompleteRequestCommand { get; }
+        /// <summary>
+        /// Команда удаления заявки.
+        /// </summary>
         public ICommand DeleteRequestCommand { get; }
 
-        // Метод для загрузки заявок из БД с подгрузкой пользователей
+        /// <summary>
+        /// Загрузка заявок из базы данных.
+        /// </summary>
         private void LoadServiceRequests()
         {
             ServiceRequests.Clear();
@@ -104,7 +136,9 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
-        // Создать новую заявку (доступно только для юзера)
+        /// <summary>
+        /// Создание новой заявки.
+        /// </summary>
         private void CreateRequest(object obj)
         {
             if (string.IsNullOrWhiteSpace(NewRequestDescription))
@@ -131,7 +165,9 @@ namespace Data_Management_Service.PageViewModel
             OnSuccess?.Invoke("Заявка успешно создана!");
         }
 
-        // Пометить как выполнено (только админ)
+        /// <summary>
+        /// Завершение заявки (только админ).
+        /// </summary>
         private void CompleteRequest(object obj)
         {
             if (SelectedService != null && _isAdmin)
@@ -148,7 +184,9 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
-        // Удалить заявку (только админ)
+        /// <summary>
+        /// Удаление заявки (только админ).
+        /// </summary>
         private void DeleteRequest(object obj)
         {
             if (SelectedService != null && _isAdmin)
@@ -167,7 +205,9 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
-        // Проверка, можно ли изменить заявку (только админ)
+        /// <summary>
+        /// Проверка возможности редактирования заявки.
+        /// </summary>
         private bool CanModifyRequest(object obj)
         {
             return SelectedService != null && _isAdmin;

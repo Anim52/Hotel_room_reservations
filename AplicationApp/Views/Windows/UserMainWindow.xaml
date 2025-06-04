@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AplicationApp"
         mc:Ignorable="d"
-           Title="UserMainWindow" Height="780" Width="1200"
-    Background="Transparent"
-    WindowStyle="None"
-    ResizeMode="NoResize"
-    WindowStartupLocation="CenterScreen"
-    AllowsTransparency="True" Cursor=""
+        Title="UserMainWindow" Height="780" Width="1200"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" Cursor=""
     >
     <Window.Resources>
         <DropShadowEffect x:Key="DropShadowEffect"

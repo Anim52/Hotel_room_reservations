@@ -15,9 +15,18 @@ using Data_Management_Service.Inerfaces;
 
 namespace Data_Management_Service.ViewsModel
 {
+    /// <summary>
+    /// ViewModel для добавления, изменения и удаления номеров.
+    /// </summary>
     public class AddNomerViewModel : BaseViewModel
     {
+        // <summary>
+        /// Контекст базы данных.
+        /// </summary>
         private readonly SqlServerContext _context;
+        /// <summary>
+        /// Сервис выбора файлов (изображений).
+        /// </summary>
         private readonly IFileDialogService _fileDialogService;
 
         // Поля для ввода данных
@@ -118,7 +127,9 @@ namespace Data_Management_Service.ViewsModel
                 OnPropertyChanged(nameof(ImagePath));
             }
         }
-
+        /// <summary>
+        /// Коллекция типов номеров.
+        /// </summary>
         public ObservableCollection<TypeNumder> TypeNumderList { get; set; }
 
         public ObservableCollection<Nomer> NomerList
@@ -130,7 +141,9 @@ namespace Data_Management_Service.ViewsModel
                 OnPropertyChanged(nameof(NomerList));
             }
         }
-
+        /// <summary>
+        /// Выбранный номер для редактирования.
+        /// </summary>
         public Nomer SelectedNomer
         {
             get => _selectedNomer;
@@ -154,20 +167,35 @@ namespace Data_Management_Service.ViewsModel
 
 
 
-        // Команды
+        /// <summary>
+        /// Команда добавления нового номера.
+        /// </summary>
         public ICommand AddNomerCommand { get; }
+        /// <summary>
+        /// Команда удаления номера.
+        /// </summary>
         public ICommand DeleteNomerCommand { get; }
+        /// <summary>
+        /// Команда редактирования номера.
+        /// </summary>
         public ICommand EditNomerCommand { get; }
+        /// <summary>
+        /// Команда выбора изображения.
+        /// </summary>
         public ICommand SelectImageCommand { get; }
 
-        // Метод выбора изображения
+        /// <summary>
+        /// Выбор изображения с помощью диалогового окна.
+        /// </summary>
         private void SelectImage(object obj)
         {
             ImagePath = _fileDialogService.OpenFileDialog();
             OnPropertyChanged(nameof(ImagePath));
         }
 
-        // Логика добавления номера
+        /// <summary>
+        /// Добавление нового номера в базу данных.
+        /// </summary>
         private void AddNomer(object obj)
         {
             if (Number <= 0 || Floor <= 0 || Cost <= 0 || string.IsNullOrWhiteSpace(Description))
@@ -204,7 +232,9 @@ namespace Data_Management_Service.ViewsModel
             ImagePath = null;
         }
 
-        // Логика изменения номера
+        /// <summary>
+        /// Редактирование существующего номера.
+        /// </summary>
         private void EditNomer(object obj)
         {
             if (SelectedNomer == null)
@@ -244,7 +274,9 @@ namespace Data_Management_Service.ViewsModel
             return SelectedNomer != null;
             }
 
-        // Логика удаления номера
+        /// <summary>
+        /// Удаление выбранного номера.
+        /// </summary>
         private void DeleteNomer(object obj)
         {
             if(SelectedNomer == null)

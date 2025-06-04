@@ -11,26 +11,59 @@ using System.Windows.Input;
 
 namespace Data_Management_Service.ViewsModel
 {
+    /// <summary>
+    /// ViewModel для регистрации нового пользователя.
+    /// Обрабатывает ввод данных, валидацию и добавление записи в базу данных.
+    /// </summary>
     public class RegisterViewModel : BaseViewModel
     {
         private readonly SqlServerContext _context;
 
-        // Свойства для привязки в XAML
+        /// <summary>
+        /// Имя пользователя.
+        /// </summary>
         public string Firstname { get; set; }
+        /// <summary>
+        /// Отчество пользователя.
+        /// </summary>
         public string Middlename { get; set; }
+        /// <summary>
+        /// Фамилия пользователя.
+        /// </summary>
         public string Lastname { get; set; }
+        /// <summary>
+        /// Логин для входа.
+        /// </summary>
         public string Login { get; set; }
+        /// <summary>
+        /// Пароль для входа.
+        /// </summary>
         public string Password { get; set; }
 
-        // Команда для регистрации
+        /// <summary>
+        /// Команда для выполнения регистрации.
+        /// </summary>
         public ICommand RegisterCommand { get; set; }
+        /// <summary>
+        /// Команда для закрытия окна регистрации.
+        /// </summary>
         public ICommand CloseCommand { get; set; }
 
-        // События для уведомлений View
+        /// <summary>
+        /// Событие, вызываемое при ошибке регистрации.
+        /// </summary>
         public event Action<string> OnError;
+        /// <summary>
+        /// Событие, вызываемое при успешной регистрации.
+        /// </summary>
         public event Action<string> OnSuccess;
+        /// <summary>
+        /// Событие для закрытия окна регистрации.
+        /// </summary>
         public event Action CloseRegistrationWindow;
-
+        /// <summary>
+        /// Конструктор. Инициализирует команды и контекст базы данных.
+        /// </summary>
         public RegisterViewModel()
         {
             _context = new SqlServerContext();
@@ -38,7 +71,10 @@ namespace Data_Management_Service.ViewsModel
             CloseCommand = new RelayCommand(CloseRegistrationView);
         }
 
-        // Метод регистрации
+        /// <summary>
+        /// Выполняет регистрацию нового пользователя после валидации.
+        /// </summary>
+        /// <param name="obj">Не используется.</param>
         private void RegisterExecute(object obj)
         {
             // Проверка на пустые поля
@@ -100,13 +136,18 @@ namespace Data_Management_Service.ViewsModel
             ClearFields();
         }
 
-        // Метод для закрытия окна регистрации
+        /// <summary>
+        /// Закрывает окно регистрации.
+        /// </summary>
+        /// <param name="obj">Не используется.</param>
         private void CloseRegistrationView(object obj)
         {
             CloseRegistrationWindow?.Invoke(); // Делегируем закрытие окна в представление
         }
 
-        // Метод для очистки полей
+        /// <summary>
+        /// Очищает все поля ввода.
+        /// </summary>
         private void ClearFields()
         {
             Firstname = string.Empty;
@@ -116,21 +157,27 @@ namespace Data_Management_Service.ViewsModel
             Password = string.Empty;
         }
 
-        // Метод для проверки логина на наличие только букв и цифр
+        // <summary>
+        /// Проверяет логин на допустимость (только буквы и цифры).
+        /// </summary>
         private bool IsValidLogin(string login)
         {
             var regex = new Regex(@"^[a-zA-Z0-9]+$"); // Регулярное выражение для букв и цифр
             return regex.IsMatch(login);
         }
 
-        // Метод для проверки пароля на наличие только букв и цифр
+        /// <summary>
+        /// Проверяет пароль на допустимость (только буквы и цифры).
+        /// </summary>
         private bool IsValidPassword(string password)
         {
             var regex = new Regex(@"^[a-zA-Z0-9]+$"); // Регулярное выражение для букв и цифр
             return regex.IsMatch(password);
         }
 
-        // Метод для проверки имени, фамилии и отчества на наличие только букв
+        /// <summary>
+        /// Проверяет имя/фамилию/отчество на допустимость (только буквы, кириллица и латиница).
+        /// </summary>
         private bool IsValidName(string name)
         {
             var regex = new Regex(@"^[a-zA-Zа-яА-Я]+$"); // Регулярное выражение для букв (кириллица и латиница)

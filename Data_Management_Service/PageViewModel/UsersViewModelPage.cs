@@ -12,14 +12,25 @@ using System.Windows.Input;
 
 namespace Data_Management_Service.PageViewModel
 {
+    /// <summary>
+    /// ViewModel для управления списком пользователей.
+    /// </summary>
+
     public class UsersViewModel : BaseViewModel
     {
+        /// <summary>
+        /// Контекст базы данных.
+        /// </summary>
         private readonly SqlServerContext _context;
 
-        // Коллекция пользователей
+        /// <summary>
+        /// Коллекция всех пользователей.
+        /// </summary>
         public ObservableCollection<Guests> UsersList { get; set; }
 
-        // Выбранный пользователь
+        /// <summary>
+        /// Выбранный пользователь.
+        /// </summary>
         private Guests _selectedUser;
         public Guests SelectedUser
         {
@@ -31,12 +42,20 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
-        // Команда для удаления пользователя
+        /// <summary>
+        /// Команда удаления пользователя.
+        /// </summary>
         public ICommand DeleteUserCommand { get; }
 
-        // Действия для отображения сообщений
+        /// <summary>
+        /// Событие отображения успеха.
+        /// </summary>
         public Action<string> OnError { get; set; }
+        /// <summary>
+        /// Событие подтверждения действия.
+        /// </summary>
         public Action<string> OnSuccess { get; set; }
+        
         public Action<string, Action> OnConfirm { get; set; }
 
         // Конструктор
@@ -51,7 +70,9 @@ namespace Data_Management_Service.PageViewModel
             DeleteUserCommand = new RelayCommand(DeleteUser);
         }
 
-        // Логика удаления пользователя и гостя
+        /// <summary>
+        /// Удаление пользователя и соответствующего объекта Guest.
+        /// </summary>
         private async void DeleteUser(object obj)
         {
             if (SelectedUser == null)

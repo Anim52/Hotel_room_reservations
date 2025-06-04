@@ -11,15 +11,25 @@ using System.Windows.Input;
 
 namespace Data_Management_Service.PageViewModel
 {
+    /// <summary>
+    /// Модель представления профиля пользователя (гостя).
+    /// </summary>
     public class AccountViewModel : BaseViewModel
     {
         private readonly SqlServerContext _context;
         private Guests _currentGuest;
-
+        /// <summary>
+        /// Событие, вызываемое при ошибке.
+        /// </summary>
         public event Action<string> OnError;
+        /// <summary>
+        /// Событие, вызываемое при успешном сохранении.
+        /// </summary>
         public event Action<string> OnSuccess;
 
-        // Свойства
+        /// <summary>
+        /// Фамилия гостя.
+        /// </summary>
         private string _lastname;
         public string Lastname
         {
@@ -34,7 +44,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Имя гостя.
+        /// </summary>
         private string _firstname;
         public string Firstname
         {
@@ -49,7 +61,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Отчество гостя.
+        /// </summary>
         private string _middlename;
         public string Middlename
         {
@@ -65,6 +79,9 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
+        /// <summary>
+        /// Дата рождения гостя.
+        /// </summary>
         private DateTime? _dateOfBirth;
         public DateTime? DateOfBirth
         {
@@ -78,7 +95,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Номер паспорта.
+        /// </summary>
         private int _passportNumber;
         public int PassportNumber
         {
@@ -92,7 +111,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Контактная информация.
+        /// </summary>
         private string _contactDetails;
         public string ContactDetails
         {
@@ -106,7 +127,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Дата регистрации в системе.
+        /// </summary>
         private DateTime? _registrationDate;
         public DateTime? RegistrationDate
         {
@@ -120,7 +143,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Предпочтения гостя.
+        /// </summary>
         private string _preferences;
         public string Preferences
         {
@@ -134,7 +159,9 @@ namespace Data_Management_Service.PageViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Полное имя (Фамилия Имя Отчество).
+        /// </summary>
         public string FullName
         {
             get => $"{Lastname} {Firstname} {Middlename}".Trim();
@@ -150,10 +177,12 @@ namespace Data_Management_Service.PageViewModel
             }
         }
 
-        // Команды
+        /// <summary>
+        /// Команда сохранения профиля.
+        /// </summary>
         public ICommand SaveCommand { get; }
 
-        // Конструктор
+        
         public AccountViewModel(Guid userId)
         {
             _context = new SqlServerContext();
@@ -170,7 +199,9 @@ namespace Data_Management_Service.PageViewModel
                 OnError?.Invoke("Ошибка загрузки профиля.");
             }
         }
-
+        /// <summary>
+        /// Загружает данные текущего пользователя.
+        /// </summary>
         private void LoadGuestData()
         {
             if (_currentGuest == null)
@@ -190,7 +221,9 @@ namespace Data_Management_Service.PageViewModel
             RegistrationDate = _currentGuest.RegistrationDate;
             Preferences = _currentGuest.Preferences ?? string.Empty;
         }
-
+        /// <summary>
+        /// Сохраняет изменения профиля пользователя.
+        /// </summary>
         private void SaveProfile(object obj)
         {
             if (string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname))

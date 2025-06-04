@@ -18,6 +18,9 @@ using System.IO;
 
 namespace Data_Management_Service.PageViewModel
 {
+    /// <summary>
+    /// Модель представления для управления бронированиями.
+    /// </summary>
     public class ReservationsViewModel : BaseViewModel
     {
         private readonly SqlServerContext _context;
@@ -28,15 +31,28 @@ namespace Data_Management_Service.PageViewModel
         private DateTime? _departureDate;
         private int _numberOfPersons;
         private decimal _calculatedPrice;
-        private string _selectedRoomType; // Свойство для выбранного типа номера
-        private ObservableCollection<Nomer> _filteredNomerList; // Список отфильтрованных номеров
-
+        private string _selectedRoomType; 
+        private ObservableCollection<Nomer> _filteredNomerList;
+        /// <summary>
+        /// Список всех доступных номеров.
+        /// </summary>
         public ObservableCollection<Nomer> NomerList { get; set; }
+        /// <summary>
+        /// Список всех бронирований.
+        /// </summary>
         public ObservableCollection<Reservations> ReservationList { get; set; }
+        /// <summary>
+        /// Список бронирований текущего пользователя.
+        /// </summary>
         public ObservableCollection<Reservations> UserReservationList { get; set; }
+        /// <summary>
+        /// Типы комнат.
+        /// </summary>
         public ObservableCollection<TypeNumder> RoomTypes { get; set; }
-
-        public ObservableCollection<Nomer> FilteredNomerList // Свойство для списка отфильтрованных номеров
+        /// <summary>
+        /// Отфильтрованный список номеров по типу.
+        /// </summary>
+        public ObservableCollection<Nomer> FilteredNomerList 
         {
             get => _filteredNomerList;
             set
@@ -47,7 +63,7 @@ namespace Data_Management_Service.PageViewModel
         }
 
 
-        // Делегаты для сообщений
+    
         public Action<string> OnError { get; set; }
         public Action<string> OnSuccess { get; set; }
         public Action<Reservations> OnReservationAdded { get; set; }
@@ -61,8 +77,8 @@ namespace Data_Management_Service.PageViewModel
             ConfirmReservationCommand = new RelayCommand(ConfirmReservation);
 
             NomerList = new ObservableCollection<Nomer>(_context.Nomers.Where(n => n.Status).ToList());
-            SelectedRoomType = "Все"; // По умолчанию показываем все номера
-            FilteredNomerList = new ObservableCollection<Nomer>(NomerList); // Изначально показываем все номера
+            SelectedRoomType = "Все"; 
+            FilteredNomerList = new ObservableCollection<Nomer>(NomerList); 
             ReservationList = new ObservableCollection<Reservations>(
                 _context.Reservations
                     .Include(r => r.Nomer)
@@ -88,14 +104,28 @@ namespace Data_Management_Service.PageViewModel
 
 
         }
-
+        /// <summary>
+        /// Команда добавления бронирования.
+        /// </summary>
         public ICommand AddReservationCommand { get; }
+        /// <summary>
+        /// Команда отмены бронирования.
+        /// </summary>
         public ICommand CancelReservationCommand { get; }
+        /// <summary>
+        /// Команда заселения гостя.
+        /// </summary>
         public ICommand SetPopulatedCommand { get; }
+        /// <summary>
+        /// Команда подтверждения бронирования.
+        /// </summary>
         public ICommand ConfirmReservationCommand { get; }
 
 
         #region BildingToXaml
+        /// <summary>
+        /// Вычисленная цена проживания.
+        /// </summary>
         public decimal CalculatedPrice
         {
             get => _calculatedPrice;
@@ -105,7 +135,9 @@ namespace Data_Management_Service.PageViewModel
                 OnPropertyChanged(nameof(CalculatedPrice));
             }
         }
-
+        /// <summary>
+        /// Выбранный номер.
+        /// </summary>
         public Nomer SelectedNomer
         {
             get => _selectedNomer;
@@ -116,7 +148,9 @@ namespace Data_Management_Service.PageViewModel
                 UpdateCalculatedPrice();
             }
         }
-
+        /// <summary>
+        /// Выбранное бронирование.
+        /// </summary>
         public Reservations SelectedReservation
         {
             get => _selectedReservation;
@@ -126,7 +160,9 @@ namespace Data_Management_Service.PageViewModel
                 OnPropertyChanged(nameof(SelectedReservation));
             }
         }
-
+        /// <summary>
+        /// Дата прибытия.
+        /// </summary>
         public DateTime? ArrivalDate
         {
             get => _arrivalDate;
@@ -137,7 +173,9 @@ namespace Data_Management_Service.PageViewModel
                 UpdateCalculatedPrice();
             }
         }
-
+        /// <summary>
+        /// Дата отъезда.
+        /// </summary>
         public DateTime? DepartureDate
         {
             get => _departureDate;
@@ -148,7 +186,9 @@ namespace Data_Management_Service.PageViewModel
                 UpdateCalculatedPrice();
             }
         }
-
+        /// <summary>
+        /// Количество человек.
+        /// </summary>
         public int NumberOfPersons
         {
             get => _numberOfPersons;
@@ -158,8 +198,10 @@ namespace Data_Management_Service.PageViewModel
                 OnPropertyChanged(nameof(NumberOfPersons));
             }
         }
-   
-    public string SelectedRoomType
+        /// <summary>
+        /// Выбранный тип номера.
+        /// </summary>  
+        public string SelectedRoomType
         {
             get => _selectedRoomType;
             set
@@ -187,23 +229,26 @@ namespace Data_Management_Service.PageViewModel
 
 
         #endregion
+        /// <summary>
+        /// Добавляет новое бронирование.
+        /// </summary>
         private void AddReservation(object obj)
         {
-            // Проверяем обязательные поля
+            
             if (SelectedNomer == null || !ArrivalDate.HasValue || !DepartureDate.HasValue || NumberOfPersons <= 0)
             {
                 OnError?.Invoke("Все поля должны быть заполнены корректно.");
                 return;
             }
 
-            // Проверяем, что дата приезда раньше даты отъезда
+        
             if (ArrivalDate >= DepartureDate)
             {
                 OnError?.Invoke("Дата приезда должна быть раньше даты отъезда.");
                 return;
             }
 
-            // Получаем ID текущего пользователя
+
             var CurrentUserId = SessionService.CurrentUserId;
             if (CurrentUserId == Guid.Empty)
             {
@@ -211,7 +256,7 @@ namespace Data_Management_Service.PageViewModel
                 return;
             }
 
-            // Получаем пользователя по ID
+           
             var currentUser = _context.Guests.FirstOrDefault(g => g.Id == CurrentUserId);
             if (currentUser == null)
             {
@@ -223,45 +268,48 @@ namespace Data_Management_Service.PageViewModel
             var newReservation = new Reservations
             {
                 Id = Guid.NewGuid(),
-                Nomer = SelectedNomer,  // Здесь мы присваиваем номер
-                Guests = currentUser,    // Здесь мы присваиваем пользователя
-                DateReservations = DateTime.Now, // Текущая дата бронирования
-                ArrivalDate = ArrivalDate.Value, // Дата приезда
-                DepartureDate = DepartureDate.Value, // Дата отъезда
-                NumberOfPersons = NumberOfPersons, // Количество человек
-                Status = Status.New, // Статус нового бронирования
+                Nomer = SelectedNomer,  
+                Guests = currentUser,    
+                DateReservations = DateTime.Now, 
+                ArrivalDate = ArrivalDate.Value, 
+                DepartureDate = DepartureDate.Value, 
+                NumberOfPersons = NumberOfPersons, 
+                Status = Status.New, 
                 TotalPrice = CalculatedPrice
             };
 
-            // Проверяем, что номер не равен null (на всякий случай, но это не должно происходить, если все корректно)
+       
             if (newReservation.Nomer == null)
             {
                 OnError?.Invoke("Ошибка: Номер не выбран.");
                 return;
             }
 
-            // Добавляем бронирование в базу данных
+     
             _context.Reservations.Add(newReservation);
-            _context.SaveChanges(); // Сохраняем изменения
+            _context.SaveChanges(); 
 
-            // Добавляем бронирование в список на клиенте
+      
             ReservationList.Add(newReservation);
             string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Бронь.pdf");
             GenerateReservationPdf(newReservation, filePath);
 
 
-            // Вызываем событие успешного добавления
+     
             OnReservationAdded?.Invoke(newReservation);
             OnSuccess?.Invoke("Бронирование успешно добавлено!");
             
 
 
-            // Сброс полей после добавления
+        
             SelectedNomer = null;
             ArrivalDate = null;
             DepartureDate = null;
             NumberOfPersons = 0;
         }
+        /// <summary>
+        /// Подтверждает выбранное бронирование.
+        /// </summary>
         private void ConfirmReservation(object obj)
         {
             if (SelectedReservation == null)
@@ -278,7 +326,9 @@ namespace Data_Management_Service.PageViewModel
 
             OnSuccess?.Invoke("Бронирование подтверждено!");
         }
-
+        /// <summary>
+        /// Устанавливает статус бронирования как "Заселен".
+        /// </summary>
         private void SetPopulated(object obj)
         {
             if (SelectedReservation == null)
@@ -297,6 +347,9 @@ namespace Data_Management_Service.PageViewModel
             OnSuccess?.Invoke("Гость заселен!");
         }
 
+        /// <summary>
+        /// Отменяет выбранное бронирование.
+        /// </summary>
         private void CancelReservation(object obj)
         {
             if (SelectedReservation == null)
@@ -305,15 +358,15 @@ namespace Data_Management_Service.PageViewModel
                 return;
             }
 
-            // Проверяем, не null ли Nomer
+            
             if (SelectedReservation.Nomer == null)
             {
                 OnError?.Invoke("Номер не найден для этого бронирования.");
                 return;
             }
 
-            // Теперь можно безопасно работать с Nomer
-            SelectedReservation.Nomer.Status = true; // Номер освобожден
+         
+            SelectedReservation.Nomer.Status = true; 
             _context.Nomers.Update(SelectedReservation.Nomer);
             _context.Reservations.Remove(SelectedReservation);
             _context.SaveChanges();
@@ -321,6 +374,9 @@ namespace Data_Management_Service.PageViewModel
             ReservationList.Remove(SelectedReservation);
             OnSuccess?.Invoke("Бронирование отменено!");
         }
+        /// <summary>
+        /// Обновляет расчет общей стоимости проживания.
+        /// </summary>
         private void UpdateCalculatedPrice()
         {
             if (SelectedNomer != null && ArrivalDate.HasValue && DepartureDate.HasValue && ArrivalDate < DepartureDate)
@@ -332,13 +388,17 @@ namespace Data_Management_Service.PageViewModel
                 CalculatedPrice = 0;
             }
         }
-
+        /// <summary>
+        /// Генерирует PDF с деталями бронирования.
+        /// </summary>
+        /// <param name="reservation">Данные бронирования.</param>
+        /// <param name="filePath">Путь сохранения PDF-файла.</param>
         public void GenerateReservationPdf(Reservations reservation, string filePath)
         {
             var doc = new Document();
             var page = doc.Pages.Add();
 
-            // Заголовок
+           
             var title = new TextFragment("Подтверждение бронирования")
             {
                 TextState = { FontSize = 20, FontStyle = FontStyles.Bold },
@@ -347,10 +407,9 @@ namespace Data_Management_Service.PageViewModel
             };
             page.Paragraphs.Add(title);
 
-            // Разделительная линия
+        
             page.Paragraphs.Add(new TextFragment("--------------------------------------------------------"));
 
-            // Информация о бронировании
             AddField(page, "Номер комнаты:", reservation.Nomer?.Number.ToString() ?? "N/A");
             AddField(page, "Гость:", $"{reservation.Guests?.FirstName ?? "N/A"} {reservation.Guests?.LastName ?? ""}");
             AddField(page, "Дата бронирования:", reservation.DateReservations.ToString("dd.MM.yyyy HH:mm"));
@@ -360,11 +419,11 @@ namespace Data_Management_Service.PageViewModel
             AddField(page, "Статус:", reservation.Status.ToString());
             AddField(page, "Общая стоимость:", reservation.TotalPrice.ToString("N0") + " руб." ?? "Не указано");
 
-            // Разделительная линия
+         
             page.Paragraphs.Add(new TextFragment("--------------------------------------------------------"));
             page.Paragraphs.Add(new TextFragment("Если возникнут какие-то вопросы обратитесь к администратору"));
 
-            // Дата печати
+        
             var dateGenerated = new TextFragment($"Документ создан: {DateTime.Now:dd.MM.yyyy HH:mm}")
             {
                 TextState = { FontSize = 10, FontStyle = FontStyles.Italic },
@@ -373,11 +432,13 @@ namespace Data_Management_Service.PageViewModel
             };
             page.Paragraphs.Add(dateGenerated);
 
-            // Сохраняем PDF
+     
             doc.Save(filePath);
         }
 
-        // Хелпер для добавления строки в виде "Название: значение"
+        /// <summary>
+        /// Добавляет текстовое поле в PDF.
+        /// </summary>
         private void AddField(Page page, string label, string value)
         {
             var text = new TextFragment($"{label} {value}")
