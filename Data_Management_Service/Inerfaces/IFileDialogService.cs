@@ -16,5 +16,5 @@ namespace Data_Management_Service.Inerfaces
         /// </summary>
         /// <returns>Путь к выбранному файлу</returns>
         string OpenFileDialog();
-    }
+    } 
 }
