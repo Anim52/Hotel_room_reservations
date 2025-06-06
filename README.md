@@ -59,7 +59,9 @@ DataContext — взаимодействие с EF Core
 
 #XML
 [Xml for ApplicationApp](https://github.com/Anim52/Hotel_room_reservations/blob/Debug/AplicationApp.xml)
+
 [Xml for Data Manegement Service](https://github.com/Anim52/Hotel_room_reservations/blob/Debug/Data_Management_Service.xml)
+
 [Xml for Database](https://github.com/Anim52/Hotel_room_reservations/blob/Debug/Database.xml)
 # 🧩 Структура проекта
  <pre lang="markdown">
