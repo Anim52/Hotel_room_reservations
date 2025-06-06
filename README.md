@@ -57,6 +57,12 @@ Services — работа с базой данных и логикой прил�
 
 DataContext — взаимодействие с EF Core
 
+# Erd Диаграмма базы данных
+
+
+![image](https://github.com/user-attachments/assets/70744d83-d503-4771-ae90-4775b5179473)
+
+
 # XML
 
 [Xml for ApplicationApp](https://github.com/Anim52/Hotel_room_reservations/blob/Debug/AplicationApp.xml)
