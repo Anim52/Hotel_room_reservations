@@ -1,0 +1,624 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Data_Management_Service</name>
+    </assembly>
+    <members>
+        <member name="T:Data_Management_Service.Command.RelayCommand">
+            <summary>
+            Реализация команды для MVVM.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.Command.RelayCommand.#ctor(System.Action{System.Object},System.Predicate{System.Object})">
+            <summary>
+            Инициализирует новый экземпляр RelayCommand.
+            </summary>
+            <param name="execute">Действие, выполняемое командой</param>
+            <param name="canExecute">Условие, при котором команда может выполняться</param>
+        </member>
+        <member name="M:Data_Management_Service.Command.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Выполняет команду.
+            </summary>
+            <param name="parameter">Параметр команды</param>
+        </member>
+        <member name="M:Data_Management_Service.Command.RelayCommand.Execute(System.Object)">
+            <summary>
+            Событие, вызываемое при изменении возможности выполнения команды.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.Inerfaces.IFileDialogService">
+            <summary>
+            Интерфейс для службы открытия файлового диалога.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.Inerfaces.IFileDialogService.OpenFileDialog">
+            <summary>
+            Открывает диалог выбора файла и возвращает путь к выбранному файлу.
+            </summary>
+            <returns>Путь к выбранному файлу</returns>
+        </member>
+        <member name="T:Data_Management_Service.OtherViews.AuthService">
+            <summary>
+            Сервис для аутентификации и регистрации пользователей.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Data_Management_Service.OtherViews.AuthService.#ctor" -->
+        <member name="F:Data_Management_Service.OtherViews.AuthService.user">
+            <summary>
+            Проверяет учетные данные при входе
+            </summary>
+            <param name="login">Логин пользователя</param>
+            <param name="password">Пароль пользователя</param>
+            <param name="user">Возвращает найденного пользователя</param>
+            <returns>Возвращает true, если пользователь найден, иначе false</returns>
+        </member>
+        <member name="M:Data_Management_Service.OtherViews.AuthService.Register(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Регистрирует нового пользователя
+            </summary>
+            <param name="lastname">Фамилия</param>
+            <param name="firstname">Имя</param>
+            <param name="middlename">Отчество</param>
+            <param name="login">Логин</param>
+            <param name="password">Пароль</param>
+            <returns>Возвращает true, если регистрация успешна, иначе false</returns>
+        </member>
+        <member name="T:Data_Management_Service.OtherViews.SessionService">
+            <summary>
+            Сервис сеанса, хранящий текущие данные пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.OtherViews.SessionService.CurrentUserLogin">
+            <summary>
+            Логин текущего пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.OtherViews.SessionService.CurrentUserId">
+            <summary>
+            Уникальный идентификатор текущего пользователя.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.PageViewModel.AccountViewModel">
+            <summary>
+            Модель представления профиля пользователя (гостя).
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.PageViewModel.AccountViewModel.OnError">
+            <summary>
+            Событие, вызываемое при ошибке.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.PageViewModel.AccountViewModel.OnSuccess">
+            <summary>
+            Событие, вызываемое при успешном сохранении.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._lastname">
+            <summary>
+            Фамилия гостя.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._firstname">
+            <summary>
+            Имя гостя.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._middlename">
+            <summary>
+            Отчество гостя.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._dateOfBirth">
+            <summary>
+            Дата рождения гостя.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._passportNumber">
+            <summary>
+            Номер паспорта.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._contactDetails">
+            <summary>
+            Контактная информация.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._registrationDate">
+            <summary>
+            Дата регистрации в системе.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.AccountViewModel._preferences">
+            <summary>
+            Предпочтения гостя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.AccountViewModel.FullName">
+            <summary>
+            Полное имя (Фамилия Имя Отчество).
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.AccountViewModel.SaveCommand">
+            <summary>
+            Команда сохранения профиля.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.AccountViewModel.LoadGuestData">
+            <summary>
+            Загружает данные текущего пользователя.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.AccountViewModel.SaveProfile(System.Object)">
+            <summary>
+            Сохраняет изменения профиля пользователя.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.PageViewModel.ReservationsViewModel">
+            <summary>
+            Модель представления для управления бронированиями.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.NomerList">
+            <summary>
+            Список всех доступных номеров.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.ReservationList">
+            <summary>
+            Список всех бронирований.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.UserReservationList">
+            <summary>
+            Список бронирований текущего пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.RoomTypes">
+            <summary>
+            Типы комнат.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.FilteredNomerList">
+            <summary>
+            Отфильтрованный список номеров по типу.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.AddReservationCommand">
+            <summary>
+            Команда добавления бронирования.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.CancelReservationCommand">
+            <summary>
+            Команда отмены бронирования.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.SetPopulatedCommand">
+            <summary>
+            Команда заселения гостя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.ConfirmReservationCommand">
+            <summary>
+            Команда подтверждения бронирования.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.CalculatedPrice">
+            <summary>
+            Вычисленная цена проживания.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.SelectedNomer">
+            <summary>
+            Выбранный номер.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.SelectedReservation">
+            <summary>
+            Выбранное бронирование.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.ArrivalDate">
+            <summary>
+            Дата прибытия.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.DepartureDate">
+            <summary>
+            Дата отъезда.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.NumberOfPersons">
+            <summary>
+            Количество человек.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ReservationsViewModel.SelectedRoomType">
+            <summary>
+            Выбранный тип номера.
+            </summary>  
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.AddReservation(System.Object)">
+            <summary>
+            Добавляет новое бронирование.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.ConfirmReservation(System.Object)">
+            <summary>
+            Подтверждает выбранное бронирование.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.SetPopulated(System.Object)">
+            <summary>
+            Устанавливает статус бронирования как "Заселен".
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.CancelReservation(System.Object)">
+            <summary>
+            Отменяет выбранное бронирование.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.UpdateCalculatedPrice">
+            <summary>
+            Обновляет расчет общей стоимости проживания.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.GenerateReservationPdf(Database.Service.Reservations,System.String)">
+            <summary>
+            Генерирует PDF с деталями бронирования.
+            </summary>
+            <param name="reservation">Данные бронирования.</param>
+            <param name="filePath">Путь сохранения PDF-файла.</param>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ReservationsViewModel.AddField(Aspose.Pdf.Page,System.String,System.String)">
+            <summary>
+            Добавляет текстовое поле в PDF.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.PageViewModel.ServiceModelPage">
+            <summary>
+            ViewModel для управления заявками на услуги (Service).
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.ServiceModelPage._context">
+            <summary>
+            Контекст базы данных.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.ServiceModelPage._selectedService">
+            <summary>
+            Выбранная заявка.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.ServiceModelPage._newRequestDescription">
+            <summary>
+            Описание новой заявки.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.ServiceModelPage._isAdmin">
+            <summary>
+            Признак, является ли пользователь администратором.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.ServiceModelPage._currentUserId">
+            <summary>
+            ID текущего пользователя.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.ServiceModelPage._currentUser">
+            <summary>
+            Текущий пользователь (для отображения ФИО).
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ServiceModelPage.ServiceRequests">
+            <summary>
+            Коллекция заявок.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ServiceModelPage.CreateRequestCommand">
+            <summary>
+            Команда создания новой заявки.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ServiceModelPage.CompleteRequestCommand">
+            <summary>
+            Команда завершения заявки.
+            </summary>       
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.ServiceModelPage.DeleteRequestCommand">
+            <summary>
+            Команда удаления заявки.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ServiceModelPage.LoadServiceRequests">
+            <summary>
+            Загрузка заявок из базы данных.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ServiceModelPage.CreateRequest(System.Object)">
+            <summary>
+            Создание новой заявки.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ServiceModelPage.CompleteRequest(System.Object)">
+            <summary>
+            Завершение заявки (только админ).
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ServiceModelPage.DeleteRequest(System.Object)">
+            <summary>
+            Удаление заявки (только админ).
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.ServiceModelPage.CanModifyRequest(System.Object)">
+            <summary>
+            Проверка возможности редактирования заявки.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.PageViewModel.UsersViewModel">
+            <summary>
+            ViewModel для управления списком пользователей.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.UsersViewModel._context">
+            <summary>
+            Контекст базы данных.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.UsersViewModel.UsersList">
+            <summary>
+            Коллекция всех пользователей.
+            </summary>
+        </member>
+        <member name="F:Data_Management_Service.PageViewModel.UsersViewModel._selectedUser">
+            <summary>
+            Выбранный пользователь.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.UsersViewModel.DeleteUserCommand">
+            <summary>
+            Команда удаления пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.UsersViewModel.OnError">
+            <summary>
+            Событие отображения успеха.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.PageViewModel.UsersViewModel.OnSuccess">
+            <summary>
+            Событие подтверждения действия.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.PageViewModel.UsersViewModel.DeleteUser(System.Object)">
+            <summary>
+            Удаление пользователя и соответствующего объекта Guest.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.ViewsModel.AddNomerViewModel">
+            <summary>
+            ViewModel для добавления, изменения и удаления номеров.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:Data_Management_Service.ViewsModel.AddNomerViewModel._context" -->
+        <member name="F:Data_Management_Service.ViewsModel.AddNomerViewModel._fileDialogService">
+            <summary>
+            Сервис выбора файлов (изображений).
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AddNomerViewModel.TypeNumderList">
+            <summary>
+            Коллекция типов номеров.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AddNomerViewModel.SelectedNomer">
+            <summary>
+            Выбранный номер для редактирования.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AddNomerViewModel.AddNomerCommand">
+            <summary>
+            Команда добавления нового номера.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AddNomerViewModel.DeleteNomerCommand">
+            <summary>
+            Команда удаления номера.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AddNomerViewModel.EditNomerCommand">
+            <summary>
+            Команда редактирования номера.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AddNomerViewModel.SelectImageCommand">
+            <summary>
+            Команда выбора изображения.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.AddNomerViewModel.SelectImage(System.Object)">
+            <summary>
+            Выбор изображения с помощью диалогового окна.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.AddNomerViewModel.AddNomer(System.Object)">
+            <summary>
+            Добавление нового номера в базу данных.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.AddNomerViewModel.EditNomer(System.Object)">
+            <summary>
+            Редактирование существующего номера.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.AddNomerViewModel.DeleteNomer(System.Object)">
+            <summary>
+            Удаление выбранного номера.
+            </summary>
+        </member>
+        <member name="T:Data_Management_Service.ViewsModel.AuthViewModel">
+            <summary>
+            ViewModel для авторизации пользователя.
+            Обрабатывает ввод логина и пароля, проверку учетных данных и открытие соответствующего окна по роли.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AuthViewModel.Login">
+            <summary>
+            Логин пользователя, вводимый в поле логина.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AuthViewModel.Password">
+            <summary>
+            Пароль пользователя, вводимый в поле пароля.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.AuthViewModel.LoginCommand">
+            <summary>
+            Команда, выполняющая авторизацию пользователя.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.AuthViewModel.OnError">
+            <summary>
+            Событие, вызываемое при возникновении ошибки авторизации.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.AuthViewModel.OnSuccess">
+            <summary>
+            Событие, вызываемое при успешной авторизации.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.AuthViewModel.OpenAdminWindow">
+            <summary>
+            Событие для открытия окна администратора.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.AuthViewModel.OpenUserWindow">
+            <summary>
+            Событие для открытия окна пользователя.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.AuthViewModel.OnLoginSuccess">
+            <summary>
+            Событие, вызываемое при успешной авторизации обычного пользователя.
+            Передаёт ID и логин пользователя.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.AuthViewModel.#ctor">
+            <summary>
+            Конструктор. Инициализирует контекст базы данных и сервис авторизации.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.AuthViewModel.LoginExecute(System.Object)">
+            <summary>
+            Выполняет логику авторизации при нажатии кнопки "Войти".
+            </summary>
+            <param name="obj">Не используется.</param>
+        </member>
+        <member name="T:Data_Management_Service.ViewsModel.BaseViewModel">
+            <summary>
+            Базовый класс ViewModel, реализующий интерфейс INotifyPropertyChanged для поддержки привязки данных.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.BaseViewModel.PropertyChanged">
+            <summary>
+            Событие, вызываемое при изменении значения свойства.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.BaseViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Вызывает событие PropertyChanged для обновления привязанных свойств в View.
+            </summary>
+            <param name="propertyName">Имя измененного свойства. Определяется автоматически, если не указано явно.</param>
+        </member>
+        <member name="T:Data_Management_Service.ViewsModel.RegisterViewModel">
+            <summary>
+            ViewModel для регистрации нового пользователя.
+            Обрабатывает ввод данных, валидацию и добавление записи в базу данных.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.Firstname">
+            <summary>
+            Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.Middlename">
+            <summary>
+            Отчество пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.Lastname">
+            <summary>
+            Фамилия пользователя.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.Login">
+            <summary>
+            Логин для входа.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.Password">
+            <summary>
+            Пароль для входа.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.RegisterCommand">
+            <summary>
+            Команда для выполнения регистрации.
+            </summary>
+        </member>
+        <member name="P:Data_Management_Service.ViewsModel.RegisterViewModel.CloseCommand">
+            <summary>
+            Команда для закрытия окна регистрации.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.RegisterViewModel.OnError">
+            <summary>
+            Событие, вызываемое при ошибке регистрации.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.RegisterViewModel.OnSuccess">
+            <summary>
+            Событие, вызываемое при успешной регистрации.
+            </summary>
+        </member>
+        <member name="E:Data_Management_Service.ViewsModel.RegisterViewModel.CloseRegistrationWindow">
+            <summary>
+            Событие для закрытия окна регистрации.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.RegisterViewModel.#ctor">
+            <summary>
+            Конструктор. Инициализирует команды и контекст базы данных.
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.RegisterViewModel.RegisterExecute(System.Object)">
+            <summary>
+            Выполняет регистрацию нового пользователя после валидации.
+            </summary>
+            <param name="obj">Не используется.</param>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.RegisterViewModel.CloseRegistrationView(System.Object)">
+            <summary>
+            Закрывает окно регистрации.
+            </summary>
+            <param name="obj">Не используется.</param>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.RegisterViewModel.ClearFields">
+            <summary>
+            Очищает все поля ввода.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Data_Management_Service.ViewsModel.RegisterViewModel.IsValidLogin(System.String)" -->
+        <member name="M:Data_Management_Service.ViewsModel.RegisterViewModel.IsValidPassword(System.String)">
+            <summary>
+            Проверяет пароль на допустимость (только буквы и цифры).
+            </summary>
+        </member>
+        <member name="M:Data_Management_Service.ViewsModel.RegisterViewModel.IsValidName(System.String)">
+            <summary>
+            Проверяет имя/фамилию/отчество на допустимость (только буквы, кириллица и латиница).
+            </summary>
+        </member>
+    </members>
+</doc>

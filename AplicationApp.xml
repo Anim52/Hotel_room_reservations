@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AplicationApp</name>
+    </assembly>
+    <members>
+        <member name="T:AplicationApp.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:AplicationApp.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:AplicationApp.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.AccauntPage">
+            <summary>
+            Логика взаимодействия для AccauntPage.xaml
+            </summary>
+            <summary>
+            AccauntPage
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.AccauntPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.AdminServicePage">
+            <summary>
+            Логика взаимодействия для AdminServicePage.xaml
+            </summary>
+            <summary>
+            AdminServicePage
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.AdminServicePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.GuestPage">
+            <summary>
+            Логика взаимодействия для GuestPage.xaml
+            </summary>
+            <summary>
+            GuestPage
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.GuestPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.NumberPage">
+            <summary>
+            Логика взаимодействия для NumberPage.xaml
+            </summary>
+            <summary>
+            NumberPage
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.NumberPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.ReservationPage">
+            <summary>
+            Логика взаимодействия для ReservationPage.xaml
+            </summary>
+            <summary>
+            ReservationPage
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.ReservationPage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.ServicePage">
+            <summary>
+            Логика взаимодействия для ServicePage.xaml
+            </summary>
+            <summary>
+            ServicePage
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.ServicePage.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Pages.UserViewReservation">
+            <summary>
+            Логика взаимодействия для UserViewReservation.xaml
+            </summary>
+            <summary>
+            UserViewReservation
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Pages.UserViewReservation.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.AutorizationView">
+            <summary>
+            Логика взаимодействия для AutorizationView.xaml
+            </summary>
+            <summary>
+            AutorizationView
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.AutorizationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Windows.EditNomerView">
+            <summary>
+            Логика взаимодействия для EditNomerView.xaml
+            </summary>
+            <summary>
+            EditNomerView
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Windows.EditNomerView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.Windows.NumberAdd">
+            <summary>
+            Логика взаимодействия для NumberAdd.xaml
+            </summary>
+            <summary>
+            NumberAdd
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.Windows.NumberAdd.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.Views.RegistrationView">
+            <summary>
+            Логика взаимодействия для RegistrationView.xaml
+            </summary>
+            <summary>
+            RegistrationView
+            </summary>
+        </member>
+        <member name="M:AplicationApp.Views.RegistrationView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:AplicationApp.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:AplicationApp.UserMainWindow">
+            <summary>
+            Логика взаимодействия для UserMainWindow.xaml
+            </summary>
+            <summary>
+            UserMainWindow
+            </summary>
+        </member>
+        <member name="M:AplicationApp.UserMainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

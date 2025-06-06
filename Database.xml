@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Database</name>
+    </assembly>
+    <members>
+        <member name="T:Database.Context.SqlServerContext">
+            <summary>
+            Контекст базы данных для SQL Server, используемый для работы с сущностями отеля.
+            </summary>
+        </member>
+        <member name="P:Database.Context.SqlServerContext.Guests">
+            <summary>
+            Набор данных гостей.
+            </summary>
+        </member>
+        <member name="P:Database.Context.SqlServerContext.Nomers">
+            <summary>
+            Набор данных номеров.
+            </summary>
+        </member>
+        <member name="P:Database.Context.SqlServerContext.Reservations">
+            <summary>
+            Набор данных бронирований.
+            </summary>
+        </member>
+        <member name="P:Database.Context.SqlServerContext.Services">
+            <summary>
+            Набор данных услуг.
+            </summary>
+        </member>
+        <member name="P:Database.Context.SqlServerContext.User">
+            <summary>
+            Набор данных пользователей.
+            </summary>
+        </member>
+        <member name="M:Database.Context.SqlServerContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Конфигурирует параметры подключения к базе данных SQL Server.
+            </summary>
+            <param name="optionsBuilder">Параметры настройки контекста.</param>
+        </member>
+        <member name="T:Database.Migrations.v10">
+            <inheritdoc />
+        </member>
+        <member name="M:Database.Migrations.v10.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Database.Migrations.v10.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Database.Migrations.v10.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Database.Migrations.AddTotalPrice">
+            <inheritdoc />
+        </member>
+        <member name="M:Database.Migrations.AddTotalPrice.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Database.Migrations.AddTotalPrice.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Database.Migrations.AddTotalPrice.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Database.Service.Guests">
+            <summary>
+            Представляет гостя отеля.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Guests.#ctor(System.Guid,System.String,System.String,System.String,System.DateTime,System.Int32,System.String,System.DateTime,System.String)">
+            <summary>
+            Инициализирует нового гостя с параметрами.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Guests.#ctor">
+            <summary>
+            Конструктор без параметров. Устанавливает дату регистрации в текущую дату.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.Id">
+            <summary>
+            Уникальный идентификатор гостя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.LastName">
+            <summary>
+            Фамилия гостя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.FirstName">
+            <summary>
+            Имя гостя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.MiddleName">
+            <summary>
+            Отчество гостя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.DateOfBirth">
+            <summary>
+            Дата рождения.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.PassportNumber">
+            <summary>
+            Номер паспорта.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.ContactDetails">
+            <summary>
+            Контактная информация.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.RegistrationDate">
+            <summary>
+            Дата регистрации в системе.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.Preferences">
+            <summary>
+            Предпочтения гостя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Guests.FullName">
+            <summary>
+            Полное имя (Фамилия Имя Отчество).
+            </summary>
+        </member>
+        <member name="M:Database.Service.Guests.ToString">
+            <summary>
+            Представление объекта в виде строки.
+            </summary>
+        </member>
+        <member name="T:Database.Service.TypeNumder">
+            <summary>
+            Типы номеров в отеле.
+            </summary>
+        </member>
+        <member name="T:Database.Service.Nomer">
+            <summary>
+            Модель номера отеля.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Nomer.#ctor(System.Guid,System.Int32,System.Int32,System.Boolean,System.Decimal,System.String,Database.Service.TypeNumder)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Database.Service.Nomer"/>.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Nomer.#ctor">
+            <summary>
+            Инициализирует новый пустой экземпляр класса <see cref="T:Database.Service.Nomer"/>.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.Id">
+            <summary>
+            Уникальный идентификатор номера.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.TypeNumder">
+            <summary>
+            Тип номера.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.Number">
+            <summary>
+            Номер комнаты.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.Floor">
+            <summary>
+            Этаж, на котором расположен номер.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.Status">
+            <summary>
+            Статус занятости номера (true - занят, false - свободен).
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.Cost">
+            <summary>
+            Стоимость номера.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.Description">
+            <summary>
+            Описание номера.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.ImagePath">
+            <summary>
+            Путь к изображению номера.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Nomer.TypeNumberString">
+            <summary>
+            Строковое представление типа номера.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Nomer.ToString">
+            <summary>
+            Возвращает строковое представление объекта.
+            </summary>
+            <returns>Строка с параметрами номера.</returns>
+        </member>
+        <member name="T:Database.Service.Status">
+            <summary>
+            Статусы бронирования.
+            </summary>
+        </member>
+        <member name="T:Database.Service.Reservations">
+            <summary>
+            Модель бронирования номера.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Reservations.#ctor(System.Guid,Database.Service.Nomer,Database.Service.Guests,System.DateTime,System.DateTime,System.DateTime,System.Int32,System.Decimal)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Database.Service.Reservations"/>.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Reservations.#ctor">
+            <summary>
+            Инициализирует новый пустой экземпляр класса <see cref="T:Database.Service.Reservations"/>.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.Id">
+            <summary>
+            Уникальный идентификатор бронирования.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.Nomer">
+            <summary>
+            Номер, который бронируется.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.Guests">
+            <summary>
+            Гость, который бронирует номер.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.DateReservations">
+            <summary>
+            Дата создания бронирования.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.ArrivalDate">
+            <summary>
+            Дата заезда.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.DepartureDate">
+            <summary>
+            Дата выезда.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.NumberOfPersons">
+            <summary>
+            Количество человек для бронирования.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.Status">
+             <summary>
+            Статус бронирования.
+             </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.TotalPrice">
+            <summary>
+            Итоговая стоимость бронирования.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Reservations.StatusRegister">
+            <summary>
+            Читаемое строковое представление статуса бронирования.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Reservations.ToString">
+            <summary>
+            Возвращает строковое представление объекта бронирования.
+            </summary>
+            <returns>Строка с деталями бронирования.</returns>
+        </member>
+        <member name="T:Database.Service.Services">
+            <summary>
+            Модель услуги, запрашиваемой пользователем.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Services.#ctor(System.Guid,System.Guid,System.String,System.DateTime,System.String)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Database.Service.Services"/>.
+            </summary>
+        </member>
+        <member name="M:Database.Service.Services.#ctor">
+            <summary>
+            Инициализирует новый пустой экземпляр класса <see cref="T:Database.Service.Services"/>.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.Id">
+            <summary>
+            Уникальный идентификатор услуги.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.UserId">
+            <summary>
+            Идентификатор пользователя, запросившего услугу.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.Description">
+            <summary>
+            Описание услуги.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.RequestDate">
+            <summary>
+            Дата запроса услуги.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.Status">
+            <summary>
+            Статус выполнения услуги.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.User">
+            <summary>
+            Пользователь, связанный с услугой.
+            </summary>
+        </member>
+        <member name="P:Database.Service.Services.Fullname">
+            <summary>
+            Полное имя пользователя, с сокращением имени и отчества.
+            </summary>
+        </member>
+        <member name="T:Database.Service.User">
+            <summary>
+            Представляет пользователя системы.
+            </summary>
+        </member>
+        <member name="M:Database.Service.User.#ctor(System.Guid,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Инициализирует нового пользователя с параметрами.
+            </summary>
+        </member>
+        <member name="M:Database.Service.User.#ctor">
+            <summary>
+            Конструктор без параметров.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Id">
+            <summary>
+            Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Lastname">
+            <summary>
+            Фамилия пользователя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Firstname">
+            <summary>
+            Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Middlename">
+            <summary>
+            Отчество пользователя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Login">
+            <summary>
+            Логин для входа.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Password">
+            <summary>
+            Пароль пользователя.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.Role">
+            <summary>
+            Роль пользователя в системе.
+            </summary>
+        </member>
+        <member name="P:Database.Service.User.FullName">
+            <summary>
+            Полное имя пользователя (ФИО).
+            </summary>
+        </member>
+        <member name="M:Database.Service.User.ToString">
+            <summary>
+            Преобразование в строку (для отображения).
+            </summary>
+        </member>
+        <member name="M:Database.Service.User.Create(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Создаёт нового пользователя с автоматически сгенерированным Id.
+            </summary>
+        </member>
+    </members>
+</doc>
